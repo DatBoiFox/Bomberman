@@ -19,12 +19,12 @@ namespace Client.Resources.Command
 
         public void move()
         {
-            player.x += 6;
+            player.x += 2;
         }
 
         public void undo()
         {
-            player.x -= 6;
+            player.x -= 2;
         }
     }
 }

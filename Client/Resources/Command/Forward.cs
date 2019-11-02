@@ -18,12 +18,12 @@ namespace Client.Resources.Command
 
         public void move()
         {
-            player.y -= 6;
+            player.y -= 2;
         }
 
         public void undo()
         {
-            player.y += 6;
+            player.y += 2;
         }
     }
 }

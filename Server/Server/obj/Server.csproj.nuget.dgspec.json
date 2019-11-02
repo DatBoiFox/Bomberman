@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ignas\\Desktop\\Server\\Server\\Server.csproj": {}
+    "C:\\Users\\Ignas\\Documents\\GitHub\\Bomberman\\Server\\Server\\Server.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ignas\\Desktop\\Server\\Server\\Server.csproj": {
+    "C:\\Users\\Ignas\\Documents\\GitHub\\Bomberman\\Server\\Server\\Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ignas\\Desktop\\Server\\Server\\Server.csproj",
+        "projectUniqueName": "C:\\Users\\Ignas\\Documents\\GitHub\\Bomberman\\Server\\Server\\Server.csproj",
         "projectName": "Server",
-        "projectPath": "C:\\Users\\Ignas\\Desktop\\Server\\Server\\Server.csproj",
+        "projectPath": "C:\\Users\\Ignas\\Documents\\GitHub\\Bomberman\\Server\\Server\\Server.csproj",
         "packagesPath": "C:\\Users\\Ignas\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ignas\\Desktop\\Server\\Server\\obj\\",
+        "outputPath": "C:\\Users\\Ignas\\Documents\\GitHub\\Bomberman\\Server\\Server\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
