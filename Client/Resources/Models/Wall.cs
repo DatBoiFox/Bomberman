@@ -1,15 +1,15 @@
-﻿namespace Client.Models
-{
-    class Wall : IGameObject
-    {
-        public int id { get; set; }
-        public int x { get; set; }
-        public int y { get; set; }
+﻿using Client.Resources.Bridge;
+using Client.Resources.Decorator;
 
-        public Wall(int x, int y)
+namespace Client.Models
+{
+    public class Wall : MapItemDecorator
+    {
+        public Wall(int x, int y, IColor color)
         {
             this.x = x;
             this.y = y;
+            this.color = color;
         }
     }
 }

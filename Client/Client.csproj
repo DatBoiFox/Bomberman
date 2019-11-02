@@ -54,13 +54,27 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
+    <Compile Include="Resources\Bridge\Black.cs" />
+    <Compile Include="Resources\Bridge\Blue.cs" />
+    <Compile Include="Resources\Bridge\Brown.cs" />
+    <Compile Include="Resources\Bridge\IColor.cs" />
+    <Compile Include="Resources\Bridge\Red.cs" />
+=======
+    <Compile Include="Resources\Adapter\Adapter_1\IMap.cs" />
+    <Compile Include="Resources\Adapter\Adapter_2\IPowerUp.cs" />
+    <Compile Include="Resources\Adapter\Adapter_2\PowerUpAdapter.cs" />
+>>>>>>> 905b933486b08bfad4e9a3feaf268b2e90c1c022
     <Compile Include="Resources\Command\Backward.cs" />
     <Compile Include="Resources\Command\Forward.cs" />
     <Compile Include="Resources\Command\ICommand.cs" />
     <Compile Include="Resources\Command\Left.cs" />
     <Compile Include="Resources\Command\RemoteControl.cs" />
     <Compile Include="Resources\Command\Right.cs" />
+    <Compile Include="Resources\Decorator\IMapItems.cs" />
+    <Compile Include="Resources\Decorator\MapItemDecorator.cs" />
     <Compile Include="Resources\Models\Map.cs" />
+    <Compile Include="Resources\Models\PowerUp.cs" />
     <Compile Include="Resources\Prototype\IBombPrototype.cs" />
     <Compile Include="Resources\Strategy\BombStrategy.cs" />
     <Compile Include="Form1.cs">
@@ -99,7 +113,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Builder\SpeedCrateBuilder.cs" />
     <Compile Include="Resources\Strategy\VerticalExplosion.cs" />
-    <Compile Include="Resources\_Interfaces\IMap.cs" />
+<<<<<<< HEAD
+    <Compile Include="Resources\Adapter\Adapter_1\IMap.cs" />
+=======
+>>>>>>> 905b933486b08bfad4e9a3feaf268b2e90c1c022
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -127,9 +144,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\Adapter\Adapter_1\" />
+<<<<<<< HEAD
     <Folder Include="Resources\Adapter\Adapter_2\" />
+=======
     <Folder Include="Resources\Decorator\" />
+>>>>>>> 905b933486b08bfad4e9a3feaf268b2e90c1c022
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
