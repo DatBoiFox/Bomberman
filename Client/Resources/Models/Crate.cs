@@ -11,17 +11,8 @@ namespace Client.Resources.Models
         public new int x { get; private set; }
         public new int y { get; private set; }
 
-<<<<<<< HEAD
-        public string powerUp { get; set; }
-
-=======
-        //public string powerUp { get; set; }
         public IPowerUp powerUp { get; set; }
 
-        public Crate()
-        {
-        }
->>>>>>> 905b933486b08bfad4e9a3feaf268b2e90c1c022
         public Crate(int x, int y)
         {
             this.x = x;
