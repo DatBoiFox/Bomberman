@@ -15,6 +15,8 @@ namespace Client.Models.Singleton
     {
         private static readonly HttpClient client = new HttpClient(new HttpClientHandler { UseProxy = false });
         private string playersData = "https://localhost:44331/api/players/";
+
+        private string bombsData = "https://localhost:44331/api/bombs/";
         //private string playersData = "https://localhost:5001/api/players/";
         private IPlayerCreator playerCreator;
         private IPlayerCreator enemyCreator;
@@ -27,6 +29,11 @@ namespace Client.Models.Singleton
         //public List<Player> players;
         public List<Player> currentlyOnlinePlayers;
         public Dictionary<int, PictureBox> enemyPlayerModels;
+
+        // Bombs
+        public List<Bomb> currentlyPlacedBombs;
+        public Dictionary<int, PictureBox> bombModels;
+
 
         public bool connectionEstablished = false;
 
@@ -59,7 +66,11 @@ namespace Client.Models.Singleton
                 playerCreator = new PlayerFactory().CreatePlayer();//PlayerCreatorHandler.GetPlayerCreator();
                 enemyCreator = new EnemyFactory().CreatePlayer();//PlayerCreatorHandler.GetEnemyCreator();
                 currentlyOnlinePlayers = new List<Player>();
+
+                currentlyPlacedBombs = new List<Bomb>();
+
                 enemyPlayerModels = new Dictionary<int, PictureBox>();
+                bombModels = new Dictionary<int, PictureBox>();
                 if (response.IsSuccessStatusCode)
                 {
 #pragma warning disable CS0618 // Type or member is obsolete
@@ -95,11 +106,15 @@ namespace Client.Models.Singleton
                     {
                         form.Controls.Remove(p.Value);
                     }
+                    foreach (KeyValuePair<int, PictureBox> p in bombModels)
+                    {
+                        form.Controls.Remove(p.Value);
+                    }
 
                     currentlyOnlinePlayers = null;
-                    currentlyOnlinePlayers = null;
+                    currentlyPlacedBombs = null;
                     enemyPlayerModels = null;
-
+                    bombModels = null;
 
                     //form.Controls.Remove()
                 }
@@ -136,6 +151,21 @@ namespace Client.Models.Singleton
             }
             return null;
         }
+
+        public async Task<List<Player>> GetAllBombs()
+        {
+            if (connectionEstablished)
+            {
+                HttpResponseMessage response = await client.GetAsync(playersData);
+                if (response.IsSuccessStatusCode)
+                {
+                    List<Player> players = await response.Content.ReadAsAsync<List<Player>>();
+                    return players;
+                }
+            }
+            return null;
+        }
+
 
         public async Task Update(Form form, Label lab)
         {
