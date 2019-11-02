@@ -1,0 +1,29 @@
+D:\Project saves\Test Projects\Game\Client\Client\bin\Debug\Client.exe.config
+D:\Project saves\Test Projects\Game\Client\Client\bin\Debug\Client.exe
+D:\Project saves\Test Projects\Game\Client\Client\bin\Debug\Client.pdb
+D:\Project saves\Test Projects\Game\Client\Client\bin\Debug\Newtonsoft.Json.dll
+D:\Project saves\Test Projects\Game\Client\Client\bin\Debug\System.Net.Http.Formatting.dll
+D:\Project saves\Test Projects\Game\Client\Client\bin\Debug\Newtonsoft.Json.xml
+D:\Project saves\Test Projects\Game\Client\Client\bin\Debug\System.Net.Http.Formatting.xml
+D:\Project saves\Test Projects\Game\Client\Client\obj\Debug\Client.Form1.resources
+D:\Project saves\Test Projects\Game\Client\Client\obj\Debug\Client.Properties.Resources.resources
+D:\Project saves\Test Projects\Game\Client\Client\obj\Debug\Client.csproj.GenerateResource.cache
+D:\Project saves\Test Projects\Game\Client\Client\obj\Debug\Client.csproj.CoreCompileInputs.cache
+D:\Project saves\Test Projects\Game\Client\Client\obj\Debug\Client.csproj.CopyComplete
+D:\Project saves\Test Projects\Game\Client\Client\obj\Debug\Client.exe
+D:\Project saves\Test Projects\Game\Client\Client\obj\Debug\Client.pdb
+D:\Project saves\Test Projects\Game\Client\Client\obj\Debug\Client.csprojAssemblyReference.cache
+C:\Users\Ignas\Desktop\Client\Client\obj\Debug\Client.csprojAssemblyReference.cache
+C:\Users\Ignas\Desktop\Client\Client\obj\Debug\Client.Form1.resources
+C:\Users\Ignas\Desktop\Client\Client\obj\Debug\Client.Properties.Resources.resources
+C:\Users\Ignas\Desktop\Client\Client\obj\Debug\Client.csproj.GenerateResource.cache
+C:\Users\Ignas\Desktop\Client\Client\obj\Debug\Client.exe
+C:\Users\Ignas\Desktop\Client\Client\obj\Debug\Client.pdb
+C:\Users\Ignas\Desktop\Client\Client\bin\Debug\Client.exe.config
+C:\Users\Ignas\Desktop\Client\Client\bin\Debug\Client.exe
+C:\Users\Ignas\Desktop\Client\Client\bin\Debug\Client.pdb
+C:\Users\Ignas\Desktop\Client\Client\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Ignas\Desktop\Client\Client\bin\Debug\System.Net.Http.Formatting.dll
+C:\Users\Ignas\Desktop\Client\Client\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Ignas\Desktop\Client\Client\bin\Debug\System.Net.Http.Formatting.xml
+C:\Users\Ignas\Desktop\Client\Client\obj\Debug\Client.csproj.CopyComplete
