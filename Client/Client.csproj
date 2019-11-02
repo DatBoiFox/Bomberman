@@ -54,6 +54,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Resources\Adapter\Adapter_1\Map.cs" />
+    <Compile Include="Resources\Adapter\Adapter_1\MapAdapter.cs" />
     <Compile Include="Resources\Bridge\Black.cs" />
     <Compile Include="Resources\Bridge\Blue.cs" />
     <Compile Include="Resources\Bridge\Brown.cs" />
@@ -136,9 +138,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\Adapter\Adapter_2\" />
-    <Folder Include="Resources\Decorator\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

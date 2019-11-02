@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Client.Models;
 using Client.Resources.Decorator;
 
-namespace Client.Resources._Interfaces
+namespace Client.Resources.Adapter.Adapter_1
 {
-    interface IMap : IMapItems
+    class Map
     {
-        void createMap();
+        public List<IGameObject> mapItems { get; set; }
     }
 }

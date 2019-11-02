@@ -9,6 +9,6 @@ namespace Client.Resources.Decorator
 {
     public interface IMapItems
     {
-        void AddMapItem();
+        void AddMapItem(IGameObject mapItem);
     }
 }
