@@ -8,7 +8,7 @@ namespace Client.Resources.Models
 {
     public class PowerUp
     {
-        public String type { get; set; }
+        public string type { get; set; }
 
         public PowerUp(string type)
         {

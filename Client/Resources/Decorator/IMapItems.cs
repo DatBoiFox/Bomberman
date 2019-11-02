@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Client.Resources.Decorator
 {
-    interface IMapItems
+    public interface IMapItems
     {
-        IGameObject GetMapItems();
+        void AddMapItem();
     }
 }

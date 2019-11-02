@@ -9,6 +9,6 @@ namespace Client.Resources.Adapter.Adapter_2
 {
     public interface IPowerUp : IGameObject
     {
-        String getPowerUpType();
+        string getPowerUpType();
     }
 }
