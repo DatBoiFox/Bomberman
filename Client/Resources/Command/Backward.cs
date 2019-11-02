@@ -18,7 +18,7 @@ namespace Client.Resources.Command
 
         public void move()
         {
-            player.y += č;
+            player.y += 2;
         }
 
         public void undo()
