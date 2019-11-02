@@ -34,3 +34,11 @@ D:\Project saves\GitKraken\Bomberman\Client\obj\Debug\Client.csproj.GenerateReso
 D:\Project saves\GitKraken\Bomberman\Client\obj\Debug\Client.csproj.CoreCompileInputs.cache
 D:\Project saves\GitKraken\Bomberman\Client\obj\Debug\Client.exe
 D:\Project saves\GitKraken\Bomberman\Client\obj\Debug\Client.pdb
+D:\Project saves\GitKraken\Bomberman\Client\bin\Debug\Client.exe.config
+D:\Project saves\GitKraken\Bomberman\Client\bin\Debug\Client.exe
+D:\Project saves\GitKraken\Bomberman\Client\bin\Debug\Client.pdb
+D:\Project saves\GitKraken\Bomberman\Client\bin\Debug\Newtonsoft.Json.dll
+D:\Project saves\GitKraken\Bomberman\Client\bin\Debug\System.Net.Http.Formatting.dll
+D:\Project saves\GitKraken\Bomberman\Client\bin\Debug\Newtonsoft.Json.xml
+D:\Project saves\GitKraken\Bomberman\Client\bin\Debug\System.Net.Http.Formatting.xml
+D:\Project saves\GitKraken\Bomberman\Client\obj\Debug\Client.csproj.CopyComplete
