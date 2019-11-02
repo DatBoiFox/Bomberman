@@ -27,3 +27,10 @@ C:\Users\Ignas\Desktop\Client\Client\bin\Debug\System.Net.Http.Formatting.dll
 C:\Users\Ignas\Desktop\Client\Client\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Ignas\Desktop\Client\Client\bin\Debug\System.Net.Http.Formatting.xml
 C:\Users\Ignas\Desktop\Client\Client\obj\Debug\Client.csproj.CopyComplete
+D:\Project saves\GitKraken\Bomberman\Client\obj\Debug\Client.csprojAssemblyReference.cache
+D:\Project saves\GitKraken\Bomberman\Client\obj\Debug\Client.Form1.resources
+D:\Project saves\GitKraken\Bomberman\Client\obj\Debug\Client.Properties.Resources.resources
+D:\Project saves\GitKraken\Bomberman\Client\obj\Debug\Client.csproj.GenerateResource.cache
+D:\Project saves\GitKraken\Bomberman\Client\obj\Debug\Client.csproj.CoreCompileInputs.cache
+D:\Project saves\GitKraken\Bomberman\Client\obj\Debug\Client.exe
+D:\Project saves\GitKraken\Bomberman\Client\obj\Debug\Client.pdb
