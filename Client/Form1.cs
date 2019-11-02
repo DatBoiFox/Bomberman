@@ -16,8 +16,8 @@ namespace Client
 {
     public partial class Form1 : Form
     {
-        private const int updateCountInterval = 35;
-        private const int updatePlayersInterval = 120;
+        private const int updateCountInterval = 300;
+        private const int updatePlayersInterval = 30;
 
         //private ConnectionHandler connectionHandler;
         private Timer updatePlayerCount;
