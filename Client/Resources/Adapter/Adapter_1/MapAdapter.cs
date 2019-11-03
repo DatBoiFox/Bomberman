@@ -13,6 +13,11 @@ namespace Client.Resources.Adapter.Adapter_1
     {
         public Map map { get; set; }
 
+        public MapAdapter()
+        {
+            map = new Map();
+        }
+
         public void AddMapItem()
         {
             //map.mapItems.Add();
@@ -21,6 +26,11 @@ namespace Client.Resources.Adapter.Adapter_1
         public void AddItemToList(IGameObject item)
         {
             map.AddItemToList(item);
+        }
+
+        public List<IGameObject> getMap()
+        {
+            return map.mapItems;
         }
     }
 }

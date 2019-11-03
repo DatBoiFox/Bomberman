@@ -8,6 +8,8 @@ namespace Client.Models
         public int x { get;set; }
         public int y { get; set; }
 
+        public string Type { get; set; }
+
         public Bomb(int x, int y)
         {
             this.x = x;

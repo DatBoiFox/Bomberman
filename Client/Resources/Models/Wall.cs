@@ -1,11 +1,13 @@
 ﻿using Client.Resources._Interfaces;
 using Client.Resources.Bridge;
 using Client.Resources.Decorator;
+using Newtonsoft.Json;
 
 namespace Client.Models
 {
     public class Wall : MapItemDecorator
     {
+
         public Wall(IMapItems wrappee) : base(wrappee)
         {
 
@@ -17,6 +19,13 @@ namespace Client.Models
             this.y = y;
             this.color = color;
             this.map = map;
+        }
+
+        [JsonConstructor]
+        public Wall(int x, int y) : base(null)
+        {
+            this.x = x;
+            this.y = y;
         }
 
         public override void AddMapItem()

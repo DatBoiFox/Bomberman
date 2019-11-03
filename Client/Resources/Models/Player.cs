@@ -10,8 +10,8 @@ namespace Client.Models
 
         public Player()
         {
-            x = new Random().Next(200);
-            y = new Random().Next(200);
+            x = 150;//new Random().Next(200);
+            y = 150; //new Random().Next(200);
         }
     }
 }

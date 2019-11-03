@@ -12,5 +12,6 @@ namespace Server.Models
         public int id { get; set; }
         public int x { get; set; }
         public int y { get; set; }
+        public string Type { get; set; }
     }
 }

@@ -42,3 +42,17 @@ D:\Project saves\GitKraken\Bomberman\Server\Server\obj\Debug\netcoreapp2.2\Serve
 D:\Project saves\GitKraken\Bomberman\Server\Server\obj\Debug\netcoreapp2.2\Server.RazorTargetAssemblyInfo.cache
 D:\Project saves\GitKraken\Bomberman\Server\Server\obj\Debug\netcoreapp2.2\Server.dll
 D:\Project saves\GitKraken\Bomberman\Server\Server\obj\Debug\netcoreapp2.2\Server.pdb
+D:\Project saves\Github Desktop Projects\Bomberman\Server\Server\bin\Debug\netcoreapp2.2\Server.deps.json
+D:\Project saves\Github Desktop Projects\Bomberman\Server\Server\bin\Debug\netcoreapp2.2\Server.runtimeconfig.json
+D:\Project saves\Github Desktop Projects\Bomberman\Server\Server\bin\Debug\netcoreapp2.2\Server.runtimeconfig.dev.json
+D:\Project saves\Github Desktop Projects\Bomberman\Server\Server\bin\Debug\netcoreapp2.2\Server.dll
+D:\Project saves\Github Desktop Projects\Bomberman\Server\Server\bin\Debug\netcoreapp2.2\Server.pdb
+D:\Project saves\Github Desktop Projects\Bomberman\Server\Server\obj\Debug\netcoreapp2.2\Server.csprojAssemblyReference.cache
+D:\Project saves\Github Desktop Projects\Bomberman\Server\Server\obj\Debug\netcoreapp2.2\Server.csproj.CoreCompileInputs.cache
+D:\Project saves\Github Desktop Projects\Bomberman\Server\Server\obj\Debug\netcoreapp2.2\Server.RazorAssemblyInfo.cache
+D:\Project saves\Github Desktop Projects\Bomberman\Server\Server\obj\Debug\netcoreapp2.2\Server.RazorAssemblyInfo.cs
+D:\Project saves\Github Desktop Projects\Bomberman\Server\Server\obj\Debug\netcoreapp2.2\Server.AssemblyInfoInputs.cache
+D:\Project saves\Github Desktop Projects\Bomberman\Server\Server\obj\Debug\netcoreapp2.2\Server.AssemblyInfo.cs
+D:\Project saves\Github Desktop Projects\Bomberman\Server\Server\obj\Debug\netcoreapp2.2\Server.RazorTargetAssemblyInfo.cache
+D:\Project saves\Github Desktop Projects\Bomberman\Server\Server\obj\Debug\netcoreapp2.2\Server.dll
+D:\Project saves\Github Desktop Projects\Bomberman\Server\Server\obj\Debug\netcoreapp2.2\Server.pdb

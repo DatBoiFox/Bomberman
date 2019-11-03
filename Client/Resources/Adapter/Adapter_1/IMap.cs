@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Client.Models;
+using Client.Resources.Adapter.Adapter_1;
 using Client.Resources.Decorator;
 
 namespace Client.Resources._Interfaces
@@ -11,5 +12,6 @@ namespace Client.Resources._Interfaces
     public interface IMap : IMapItems
     {
         void AddItemToList(IGameObject item);
+        List<IGameObject> getMap();
     }
 }

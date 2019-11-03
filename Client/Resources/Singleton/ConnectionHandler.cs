@@ -9,6 +9,14 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Client.Resources._Interfaces;
+using Client.Resources.Adapter.Adapter_1;
+using Client.Resources.Bridge;
+using Client.Resources.Builder;
+using Client.Resources.Decorator;
+using Client.Resources.Models;
+using Client.Resources.Strategy;
+
 namespace Client.Models.Singleton
 {
     public class ConnectionHandler
@@ -31,8 +39,17 @@ namespace Client.Models.Singleton
         public Dictionary<int, PictureBox> enemyPlayerModels;
 
         // Bombs
-        public List<Bomb> currentlyPlacedBombs;
-        public Dictionary<int, PictureBox> bombModels;
+        public List<Bomb> playerPlacedBombs;
+        public List<Bomb> enemyPlacedBombs;
+        public Dictionary<int, PictureBox> playerPlacedBombModels;
+        public Dictionary<int, PictureBox> enemyPlacedBombModels;
+
+
+        // Walls
+        private string wallsData = "https://localhost:44331/api/walls/";
+        public List<Wall> roomWalls;
+        public Dictionary<int, PictureBox> wallModels;
+
 
 
         public bool connectionEstablished = false;
@@ -52,6 +69,72 @@ namespace Client.Models.Singleton
 
         }
 
+        private async Task TryToCreateMap(Form form)
+        {
+
+            
+
+
+            IMap mapAdapter = new MapAdapter();
+            IMapItems mapItems = mapAdapter;
+            mapItems = new Wall(0, 40, new Blue(), mapAdapter, mapItems);
+            mapItems = new Wall(0, 542, new Blue(), mapAdapter, mapItems);
+            mapItems = new Wall(0, 0, new Blue(), mapAdapter, mapItems);
+            mapItems = new Wall(565, 0, new Blue(), mapAdapter, mapItems);
+
+            //mapItems = new Wall(120, 210, new Blue(), mapAdapter, mapItems);
+
+            //for (int i = 1; i <= 10; i++)
+            //{
+            //    mapItems = new Wall(i*10, 30, new Blue(), mapAdapter, mapItems);
+            //}
+
+            //PowerUpCrateBuildDirector director = new PowerUpCrateBuildDirector();
+            //IPowerUpCrateBuilder builder = new QuantityCrateBuilder();
+            //director.Construct(builder, 300, 300, mapAdapter, mapItems);
+            //mapItems = builder.GetCrate();
+
+
+
+            mapItems.AddMapItem();
+            if (mapAdapter.getMap()[0] is Wall)
+                form.Controls.Add(new PictureBox { Name = "Wall", Location = new Point(mapAdapter.getMap()[0].x, mapAdapter.getMap()[0].y), Size = new Size(600, 20), BackColor = Color.DarkSlateBlue });
+            if (mapAdapter.getMap()[1] is Wall)
+                form.Controls.Add(new PictureBox { Name = "Wall", Location = new Point(mapAdapter.getMap()[1].x, mapAdapter.getMap()[1].y), Size = new Size(600, 20), BackColor = Color.DarkSlateBlue });
+            if (mapAdapter.getMap()[2] is Wall)
+                form.Controls.Add(new PictureBox { Name = "Wall", Location = new Point(mapAdapter.getMap()[2].x, mapAdapter.getMap()[2].y), Size = new Size(20, 600), BackColor = Color.DarkSlateBlue });
+            if (mapAdapter.getMap()[3] is Wall)
+                form.Controls.Add(new PictureBox { Name = "Wall", Location = new Point(mapAdapter.getMap()[3].x, mapAdapter.getMap()[3].y), Size = new Size(20, 600), BackColor = Color.DarkSlateBlue });
+
+            foreach (var v in mapAdapter.getMap())
+            {
+                if (v is Wall)
+                {
+                    roomWalls.Add((Wall)v);
+                }
+            }
+            List<IGameObject> serverWalls = new List<IGameObject>();
+            foreach (var v in roomWalls)
+            {
+                serverWalls.Add(v);
+                HttpResponseMessage response = await client.PostAsJsonAsync(wallsData, v);
+            }
+            //List<Wall> walls = new List<Wall>();
+            //walls.Add(roomWalls[0].map.getMap());
+
+        }
+
+        private async Task TryTogetMap(Form form)
+        {
+
+
+            form.Controls.Add(new PictureBox { Name = "Wall", Location = new Point(roomWalls[0].x, roomWalls[0].y), Size = new Size(600, 20), BackColor = Color.DarkSlateBlue });
+            form.Controls.Add(new PictureBox { Name = "Wall", Location = new Point(roomWalls[1].x, roomWalls[1].y), Size = new Size(600, 20), BackColor = Color.DarkSlateBlue });
+            form.Controls.Add(new PictureBox { Name = "Wall", Location = new Point(roomWalls[2].x, roomWalls[2].y), Size = new Size(20, 600), BackColor = Color.DarkSlateBlue });
+            form.Controls.Add(new PictureBox { Name = "Wall", Location = new Point(roomWalls[3].x, roomWalls[3].y), Size = new Size(20, 600), BackColor = Color.DarkSlateBlue });
+
+        }
+
         public ConnectionHandler()
         {
             //playerModels = new List<PictureBox>();
@@ -67,10 +150,12 @@ namespace Client.Models.Singleton
                 enemyCreator = new EnemyFactory().CreatePlayer();//PlayerCreatorHandler.GetEnemyCreator();
                 currentlyOnlinePlayers = new List<Player>();
 
-                currentlyPlacedBombs = new List<Bomb>();
+                playerPlacedBombs = new List<Bomb>();
+                enemyPlacedBombs = new List<Bomb>();
 
                 enemyPlayerModels = new Dictionary<int, PictureBox>();
-                bombModels = new Dictionary<int, PictureBox>();
+                playerPlacedBombModels = new Dictionary<int, PictureBox>();
+                enemyPlacedBombModels = new Dictionary<int, PictureBox>();
                 if (response.IsSuccessStatusCode)
                 {
 #pragma warning disable CS0618 // Type or member is obsolete
@@ -80,6 +165,31 @@ namespace Client.Models.Singleton
 
                     clientPlayerBox = playerCreator.CreatePlayerModel(clientPlayer);
                     form.Controls.Add(clientPlayerBox);
+                    roomWalls = new List<Wall>();
+
+                    
+                    //response = await client.GetAsync(wallsData);
+
+                    HttpResponseMessage wallsResponse = await client.GetAsync(wallsData);
+
+
+                    if (wallsResponse.IsSuccessStatusCode)
+                    {
+#pragma warning disable CS0618 // Type or member is obsolete
+                        roomWalls = await JsonConvert.DeserializeObjectAsync<List<Wall>>(await wallsResponse.Content.ReadAsStringAsync());
+#pragma warning restore CS0618 // Type or member is obsolete
+                        if (roomWalls.Count > 0)
+                        {
+                            await TryTogetMap(form);
+                        }
+                        else
+                        {
+                            await TryToCreateMap(form);
+
+                        }
+
+                    }
+
                 }
             }
 
@@ -106,15 +216,21 @@ namespace Client.Models.Singleton
                     {
                         form.Controls.Remove(p.Value);
                     }
-                    foreach (KeyValuePair<int, PictureBox> p in bombModels)
+                    foreach (KeyValuePair<int, PictureBox> p in playerPlacedBombModels)
+                    {
+                        form.Controls.Remove(p.Value);
+                    }
+                    foreach (KeyValuePair<int, PictureBox> p in enemyPlacedBombModels)
                     {
                         form.Controls.Remove(p.Value);
                     }
 
                     currentlyOnlinePlayers = null;
-                    currentlyPlacedBombs = null;
+                    playerPlacedBombs = null;
+                    enemyPlacedBombs = null;
                     enemyPlayerModels = null;
-                    bombModels = null;
+                    playerPlacedBombModels = null;
+                    enemyPlacedBombModels = null;
 
                     //form.Controls.Remove()
                 }
@@ -152,18 +268,24 @@ namespace Client.Models.Singleton
             return null;
         }
 
-        public async Task<List<Player>> GetAllBombs()
+        public async Task<List<Bomb>> GetAllBombs()
         {
             if (connectionEstablished)
             {
-                HttpResponseMessage response = await client.GetAsync(playersData);
+                HttpResponseMessage response = await client.GetAsync(bombsData);
                 if (response.IsSuccessStatusCode)
                 {
-                    List<Player> players = await response.Content.ReadAsAsync<List<Player>>();
-                    return players;
+                    List<Bomb> bombs = await response.Content.ReadAsAsync<List<Bomb>>();
+                    return bombs;
                 }
             }
             return null;
+        }
+
+        public async Task PostBomb(Bomb b, string bombType)
+        {
+            b.Type = bombType;
+            HttpResponseMessage response = await client.PostAsJsonAsync(bombsData, b);
         }
 
 
@@ -171,6 +293,8 @@ namespace Client.Models.Singleton
         {
             if (!connectionEstablished)
                 return;
+
+            // PLAYERS LOGIC
 
             currentlyOnlinePlayers = await GetAllPlayers();
             currentlyOnlinePlayers = currentlyOnlinePlayers.Where(p => p.id != clientPlayer.id).ToList();
@@ -194,6 +318,37 @@ namespace Client.Models.Singleton
                     enemyPlayerModels[p.id].Location = new Point(p.x, p.y);
                 }
 
+            }
+        }
+
+        public async Task UpdateBombs(Form form, Label lab)
+        {
+            if (!connectionEstablished)
+                return;
+
+            // BOMBS LOGICS
+            enemyPlacedBombs = await GetAllBombs();
+            PlayerFactory fac = new PlayerFactory();
+            foreach (Bomb p in enemyPlacedBombs)
+            {
+                if (!enemyPlacedBombModels.ContainsKey(p.id))
+                {
+                    if (p.Type.Equals("Vertical"))
+                    {
+                        PictureBox bomb = fac.CreateBomb(new VerticalExplosion()).CreateBombModel(p);
+                        //enemyPlayerModels.Add(p.id, enemy);
+                        enemyPlacedBombModels.Add(p.id, bomb);
+                        form.Controls.Add(bomb);
+                    }
+                    if (p.Type.Equals("Horizontal"))
+                    {
+                        PictureBox bomb = fac.CreateBomb(new HorizontalExplosion()).CreateBombModel(p);
+                        //enemyPlayerModels.Add(p.id, enemy);
+                        enemyPlacedBombModels.Add(p.id, bomb);
+                        form.Controls.Add(bomb);
+                    }
+
+                }
             }
 
 

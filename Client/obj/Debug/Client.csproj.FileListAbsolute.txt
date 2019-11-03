@@ -48,3 +48,18 @@ C:\Users\Ignas\Documents\GitHub\Bomberman\Client\obj\Debug\Client.Properties.Res
 C:\Users\Ignas\Documents\GitHub\Bomberman\Client\obj\Debug\Client.csproj.GenerateResource.cache
 C:\Users\Ignas\Documents\GitHub\Bomberman\Client\obj\Debug\Client.exe
 C:\Users\Ignas\Documents\GitHub\Bomberman\Client\obj\Debug\Client.pdb
+D:\Project saves\Github Desktop Projects\Bomberman\Client\bin\Debug\Client.exe.config
+D:\Project saves\Github Desktop Projects\Bomberman\Client\bin\Debug\Client.exe
+D:\Project saves\Github Desktop Projects\Bomberman\Client\bin\Debug\Client.pdb
+D:\Project saves\Github Desktop Projects\Bomberman\Client\bin\Debug\Newtonsoft.Json.dll
+D:\Project saves\Github Desktop Projects\Bomberman\Client\bin\Debug\System.Net.Http.Formatting.dll
+D:\Project saves\Github Desktop Projects\Bomberman\Client\bin\Debug\Newtonsoft.Json.xml
+D:\Project saves\Github Desktop Projects\Bomberman\Client\bin\Debug\System.Net.Http.Formatting.xml
+D:\Project saves\Github Desktop Projects\Bomberman\Client\obj\Debug\Client.csprojAssemblyReference.cache
+D:\Project saves\Github Desktop Projects\Bomberman\Client\obj\Debug\Client.Form1.resources
+D:\Project saves\Github Desktop Projects\Bomberman\Client\obj\Debug\Client.Properties.Resources.resources
+D:\Project saves\Github Desktop Projects\Bomberman\Client\obj\Debug\Client.csproj.GenerateResource.cache
+D:\Project saves\Github Desktop Projects\Bomberman\Client\obj\Debug\Client.csproj.CoreCompileInputs.cache
+D:\Project saves\Github Desktop Projects\Bomberman\Client\obj\Debug\Client.csproj.CopyComplete
+D:\Project saves\Github Desktop Projects\Bomberman\Client\obj\Debug\Client.exe
+D:\Project saves\Github Desktop Projects\Bomberman\Client\obj\Debug\Client.pdb

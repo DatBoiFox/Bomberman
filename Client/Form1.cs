@@ -23,12 +23,16 @@ namespace Client
         private const int updateCountInterval = 300;
         private const int updatePlayersInterval = 30;
 
+        private const int updateBombs = 100;
+
+
         //private ConnectionHandler connectionHandler;
         private Timer updatePlayerCount;
         private Timer updatePlayers;
+        private Timer updateBombsTimer;
 
         private RemoteControl rc = new RemoteControl();
-        private List<Bomb> bombs = new List<Bomb>();
+        //private List<Bomb> bombs = new List<Bomb>();
 
         //PictureBox box = new PictureBox
         //{
@@ -53,12 +57,16 @@ namespace Client
         private void SetUp()
         {
             updatePlayerCount = new Timer { Interval = updateCountInterval };
+            
             //updatePlayerCount.Start();
             //updatePlayerCount.Tick += UpdatePlayersCount;
 
             updatePlayers = new Timer { Interval = updatePlayersInterval };
             //updatePlayers.Start();
             updatePlayers.Tick += UpdatePlayers;
+
+            updateBombsTimer = new Timer { Interval = updateBombs };
+            updateBombsTimer.Tick += UpdateBombs;
 
             //this.Controls.Add(box);
         }
@@ -71,6 +79,15 @@ namespace Client
                 //await connectionHandler.GetAllPlayers();
                 //label2.Text = "Current Players: " + connectionHandler.GetAllPlayers().
             }
+        }
+
+        private async void UpdateBombs(object sender, EventArgs e)
+        {
+            ConnectionHandler connectionHandler = ConnectionHandler.GetInstance();
+            if (!connectionHandler.connectionEstablished)
+                return;
+
+            await connectionHandler.UpdateBombs(this, label1);
         }
 
         private async void UpdatePlayers(object sender, EventArgs e)
@@ -112,9 +129,10 @@ namespace Client
                 if (Keyboard.IsKeyDown(Key.X) || Keyboard.IsKeyDown(Key.Z))
                 {
                     Bomb bomb;
-                    if (bombs.Count > 0)
+                    String bombType = "";
+                    if (connectionHandler.playerPlacedBombs.Count > 0)
                     {
-                        bomb = bombs.Last().Clone();
+                        bomb = connectionHandler.playerPlacedBombs.Last().Clone();
                         bomb.x = connectionHandler.clientPlayer.x;
                         bomb.y = connectionHandler.clientPlayer.y;
                     }
@@ -122,33 +140,31 @@ namespace Client
                     {
                         bomb = new Bomb(connectionHandler.clientPlayer.x, connectionHandler.clientPlayer.y);
                     }
-                    bombs.Add(bomb);
+                    
                     PlayerFactory fac = new PlayerFactory();
 
-                    if (Keyboard.IsKeyDown(Key.X))
+                    if (Keyboard.IsKeyUp(Key.X))
                     {
                         PictureBox b = fac.CreateBomb(new HorizontalExplosion()).CreateBombModel(bomb);
+                        bomb.Type = "Horizontal";
+                        connectionHandler.playerPlacedBombModels.Add(connectionHandler.playerPlacedBombs.Count, b);
                         this.Controls.Add(b);
+                        bombType = "Horizontal";
                     }
-                    if (Keyboard.IsKeyDown(Key.Z))
+                    if (Keyboard.IsKeyUp(Key.Z))
                     {
                         PictureBox b = fac.CreateBomb(new VerticalExplosion()).CreateBombModel(bomb);
+                        connectionHandler.playerPlacedBombModels.Add(connectionHandler.playerPlacedBombs.Count, b);
+                        bomb.Type = "Vertical";
                         this.Controls.Add(b);
+                        bombType = "Vertical";
                     }
+                    connectionHandler.playerPlacedBombs.Add(bomb);
+                    await connectionHandler.PostBomb(bomb, bombType);
                 }
                 if (Keyboard.IsKeyDown(Key.E))
                 {
-                    IMap mapAdapter = new MapAdapter();
-                    IMapItems mapItems = mapAdapter;
-                    mapItems = new Wall(1, 1, new Blue(), mapAdapter, mapItems);
-                    mapItems = new Wall(2, 2, new Blue(), mapAdapter, mapItems);
 
-                    PowerUpCrateBuildDirector director = new PowerUpCrateBuildDirector();
-                    IPowerUpCrateBuilder builder = new QuantityCrateBuilder();
-                    director.Construct(builder, 3, 3, mapAdapter, mapItems);
-                    mapItems = builder.GetCrate();
-
-                    mapItems.AddMapItem();
                     //IPowerUpCrateBuilder builder = new SpeedCrateBuilder();
                     //PowerUpCrateBuildDirector director = new PowerUpCrateBuildDirector();
                     //director.Construct(builder, 10, 10);
@@ -176,7 +192,9 @@ namespace Client
             ConnectionHandler connectionHandler = ConnectionHandler.GetInstance();
             await connectionHandler.Connect(this);
             if (connectionHandler.connectionEstablished)
+            {
                 label1.Text = "Connected";
+            }
         }
         public async void Disconnect()
         {
@@ -187,14 +205,18 @@ namespace Client
         // ------------------------------------------
         private void button1_Click(object sender, EventArgs e)
         {
-            updatePlayers.Start();
+            
             Connect();
+            updateBombsTimer.Start();
+            updatePlayers.Start();
+            
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             updatePlayers.Stop();
+            updateBombsTimer.Stop();
             Disconnect();
 
         }

@@ -20,6 +20,8 @@ namespace Server.Models
 
         public DbSet<Server.Models.Crate> Crate { get; set; }
 
+        public DbSet<Server.Models.Wall> Wall { get; set; }
+
         //public DbSet<GameServer.Models.Player> Player { get; set; }
 
         //public DbSet<GameServer.Models.Bomb> Bomb { get; set; }

@@ -12942,11 +12942,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Project saves\\GitKraken\\Bomberman\\Server\\Server\\Server.csproj",
+      "projectUniqueName": "D:\\Project saves\\Github Desktop Projects\\Bomberman\\Server\\Server\\Server.csproj",
       "projectName": "Server",
-      "projectPath": "D:\\Project saves\\GitKraken\\Bomberman\\Server\\Server\\Server.csproj",
+      "projectPath": "D:\\Project saves\\Github Desktop Projects\\Bomberman\\Server\\Server\\Server.csproj",
       "packagesPath": "C:\\Users\\Vartotojas\\.nuget\\packages\\",
-      "outputPath": "D:\\Project saves\\GitKraken\\Bomberman\\Server\\Server\\obj\\",
+      "outputPath": "D:\\Project saves\\Github Desktop Projects\\Bomberman\\Server\\Server\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

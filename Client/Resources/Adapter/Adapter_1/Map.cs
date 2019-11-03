@@ -8,9 +8,14 @@ using Client.Resources.Decorator;
 
 namespace Client.Resources.Adapter.Adapter_1
 {
-    class Map
+    public class Map
     {
         public List<IGameObject> mapItems { get; set; }
+
+        public Map()
+        {
+            mapItems = new List<IGameObject>();
+        }
 
         public void AddItemToList(IGameObject item)
         {
