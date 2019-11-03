@@ -42,3 +42,9 @@ D:\Project saves\GitKraken\Bomberman\Client\bin\Debug\System.Net.Http.Formatting
 D:\Project saves\GitKraken\Bomberman\Client\bin\Debug\Newtonsoft.Json.xml
 D:\Project saves\GitKraken\Bomberman\Client\bin\Debug\System.Net.Http.Formatting.xml
 D:\Project saves\GitKraken\Bomberman\Client\obj\Debug\Client.csproj.CopyComplete
+C:\Users\Ignas\Documents\GitHub\Bomberman\Client\obj\Debug\Client.csprojAssemblyReference.cache
+C:\Users\Ignas\Documents\GitHub\Bomberman\Client\obj\Debug\Client.Form1.resources
+C:\Users\Ignas\Documents\GitHub\Bomberman\Client\obj\Debug\Client.Properties.Resources.resources
+C:\Users\Ignas\Documents\GitHub\Bomberman\Client\obj\Debug\Client.csproj.GenerateResource.cache
+C:\Users\Ignas\Documents\GitHub\Bomberman\Client\obj\Debug\Client.exe
+C:\Users\Ignas\Documents\GitHub\Bomberman\Client\obj\Debug\Client.pdb

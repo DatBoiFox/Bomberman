@@ -1,8 +1,12 @@
 ﻿using Client.Models;
 using Client.Models.Singleton;
+using Client.Resources._Interfaces;
 using Client.Resources.Abstract_Factory;
+using Client.Resources.Adapter.Adapter_1;
+using Client.Resources.Bridge;
 using Client.Resources.Builder;
 using Client.Resources.Command;
+using Client.Resources.Decorator;
 using Client.Resources.Models;
 using Client.Resources.Strategy;
 using System;
@@ -134,19 +138,30 @@ namespace Client
                 }
                 if (Keyboard.IsKeyDown(Key.E))
                 {
-                    IPowerUpCrateBuilder builder = new SpeedCrateBuilder();
+                    IMap mapAdapter = new MapAdapter();
+                    IMapItems mapItems = mapAdapter;
+                    mapItems = new Wall(1, 1, new Blue(), mapAdapter, mapItems);
+                    mapItems = new Wall(2, 2, new Blue(), mapAdapter, mapItems);
+
                     PowerUpCrateBuildDirector director = new PowerUpCrateBuildDirector();
-                    director.Construct(builder, 10, 10);
-                    Crate c = builder.GetCrate();
-                    c.ShowCrate();
+                    IPowerUpCrateBuilder builder = new QuantityCrateBuilder();
+                    director.Construct(builder, 3, 3, mapAdapter, mapItems);
+                    mapItems = builder.GetCrate();
+
+                    mapItems.AddMapItem();
+                    //IPowerUpCrateBuilder builder = new SpeedCrateBuilder();
+                    //PowerUpCrateBuildDirector director = new PowerUpCrateBuildDirector();
+                    //director.Construct(builder, 10, 10);
+                    //Crate c = builder.GetCrate();
+                    //c.ShowCrate();
                 }
                 if (Keyboard.IsKeyDown(Key.Q))
                 {
-                    IPowerUpCrateBuilder builder = new QuantityCrateBuilder();
-                    PowerUpCrateBuildDirector director = new PowerUpCrateBuildDirector();
-                    director.Construct(builder, 10, 10);
-                    Crate c = builder.GetCrate();
-                    c.ShowCrate();
+                    //IPowerUpCrateBuilder builder = new QuantityCrateBuilder();
+                    //PowerUpCrateBuildDirector director = new PowerUpCrateBuildDirector();
+                    //director.Construct(builder, 10, 10);
+                    //Crate c = builder.GetCrate();
+                    //c.ShowCrate();
                 }
             }
 

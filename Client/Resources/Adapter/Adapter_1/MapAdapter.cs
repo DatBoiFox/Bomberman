@@ -13,14 +13,14 @@ namespace Client.Resources.Adapter.Adapter_1
     {
         public Map map { get; set; }
 
-        public void AddMapItem(IGameObject mapItem)
+        public void AddMapItem()
         {
-            map.mapItems.Add(mapItem);
+            //map.mapItems.Add();
         }
 
-        public void createMap()
+        public void AddItemToList(IGameObject item)
         {
-            throw new NotImplementedException();
+            map.AddItemToList(item);
         }
     }
 }

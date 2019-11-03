@@ -1,4 +1,5 @@
 ﻿using Client.Models;
+using Client.Resources._Interfaces;
 using Client.Resources.Bridge;
 using System;
 using System.Collections.Generic;
@@ -14,9 +15,10 @@ namespace Client.Resources.Decorator
         public int x { get; set; }
         public int y { get; set; }
 
-        public IColor color { get; protected set; }
+        public IColor color { get; set; }
+        public IMap map { get; set; }
 
-        protected IMapItems wrappee;
+        public IMapItems wrappee { get; set; }
 
         public MapItemDecorator(IMapItems wrappee)
         {

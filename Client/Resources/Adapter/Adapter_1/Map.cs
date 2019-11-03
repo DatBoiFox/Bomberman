@@ -11,5 +11,10 @@ namespace Client.Resources.Adapter.Adapter_1
     class Map
     {
         public List<IGameObject> mapItems { get; set; }
+
+        public void AddItemToList(IGameObject item)
+        {
+            mapItems.Add(item);
+        }
     }
 }
