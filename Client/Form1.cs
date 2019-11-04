@@ -24,6 +24,7 @@ namespace Client
         private const int updatePlayersInterval = 30;
 
         private const int updateBombs = 100;
+        private bool canBomb = true;
 
 
         //private ConnectionHandler connectionHandler;
@@ -128,39 +129,47 @@ namespace Client
 
                 if (Keyboard.IsKeyDown(Key.X) || Keyboard.IsKeyDown(Key.Z))
                 {
-                    Bomb bomb;
-                    String bombType = "";
-                    if (connectionHandler.playerPlacedBombs.Count > 0)
+                    if (canBomb == true)
                     {
-                        bomb = connectionHandler.playerPlacedBombs.Last().Clone();
-                        bomb.x = connectionHandler.clientPlayer.x;
-                        bomb.y = connectionHandler.clientPlayer.y;
-                    }
-                    else
-                    {
-                        bomb = new Bomb(connectionHandler.clientPlayer.x, connectionHandler.clientPlayer.y);
-                    }
-                    
-                    PlayerFactory fac = new PlayerFactory();
+                        canBomb = false;
+                        Bomb bomb;
+                        String bombType = "";
+                        if (connectionHandler.playerPlacedBombs.Count > 0)
+                        {
+                            bomb = connectionHandler.playerPlacedBombs.Last().Clone();
+                            bomb.x = connectionHandler.clientPlayer.x;
+                            bomb.y = connectionHandler.clientPlayer.y;
+                        }
+                        else
+                        {
+                            bomb = new Bomb(connectionHandler.clientPlayer.x, connectionHandler.clientPlayer.y);
+                        }
 
-                    if (Keyboard.IsKeyUp(Key.X))
-                    {
-                        PictureBox b = fac.CreateBomb(new HorizontalExplosion()).CreateBombModel(bomb);
-                        bomb.Type = "Horizontal";
-                        connectionHandler.playerPlacedBombModels.Add(connectionHandler.playerPlacedBombs.Count, b);
-                        this.Controls.Add(b);
-                        bombType = "Horizontal";
+                        PlayerFactory fac = new PlayerFactory();
+
+                        if (Keyboard.IsKeyUp(Key.X))
+                        {
+                            PictureBox b = fac.CreateBomb(new HorizontalExplosion()).CreateBombModel(bomb);
+                            bomb.Type = "Horizontal";
+                            connectionHandler.playerPlacedBombModels.Add(connectionHandler.playerPlacedBombs.Count, b);
+                            this.Controls.Add(b);
+                            bombType = "Horizontal";
+                        }
+                        if (Keyboard.IsKeyUp(Key.Z))
+                        {
+                            PictureBox b = fac.CreateBomb(new VerticalExplosion()).CreateBombModel(bomb);
+                            connectionHandler.playerPlacedBombModels.Add(connectionHandler.playerPlacedBombs.Count, b);
+                            bomb.Type = "Vertical";
+                            this.Controls.Add(b);
+                            bombType = "Vertical";
+                        }
+                        connectionHandler.playerPlacedBombs.Add(bomb);
+                        await connectionHandler.PostBomb(bomb, bombType);
                     }
-                    if (Keyboard.IsKeyUp(Key.Z))
-                    {
-                        PictureBox b = fac.CreateBomb(new VerticalExplosion()).CreateBombModel(bomb);
-                        connectionHandler.playerPlacedBombModels.Add(connectionHandler.playerPlacedBombs.Count, b);
-                        bomb.Type = "Vertical";
-                        this.Controls.Add(b);
-                        bombType = "Vertical";
-                    }
-                    connectionHandler.playerPlacedBombs.Add(bomb);
-                    await connectionHandler.PostBomb(bomb, bombType);
+                }
+                else if (Keyboard.IsKeyUp(Key.X) || Keyboard.IsKeyUp(Key.Z))
+                {
+                    canBomb = true;
                 }
                 if (Keyboard.IsKeyDown(Key.E))
                 {
