@@ -170,6 +170,19 @@ namespace Client
                     //director.Construct(builder, 10, 10);
                     //Crate c = builder.GetCrate();
                     //c.ShowCrate();
+                    //this.Controls.Add(new PictureBox { Name = "Wall", Location = new Point(0, 30), Size = new Size(600, 30), BackColor = Color.Black });
+
+                    //List<List<int>> mapWallVals = {0};
+
+                    for (int i = 2; i < 10; i++)
+                    {
+                        if(i %2 != 0)
+                            continue;
+                        int x = 30 * i;
+                        int y = 60;
+                        this.Controls.Add(new PictureBox { Name = "Wall", Location = new Point(x, y), Size = new Size(30, 30), BackColor = Color.Black });
+                    }
+
                 }
                 if (Keyboard.IsKeyDown(Key.Q))
                 {
@@ -178,6 +191,40 @@ namespace Client
                     //director.Construct(builder, 10, 10);
                     //Crate c = builder.GetCrate();
                     //c.ShowCrate();
+
+                    //IMap mapAdapter = new MapAdapter();
+                    //IMapItems mapItems = mapAdapter;
+
+                    //PowerUpCrateBuildDirector director = new PowerUpCrateBuildDirector();
+                    //IPowerUpCrateBuilder builder = new QuantityCrateBuilder();
+                    //IPowerUpCrateBuilder builders = new SpeedCrateBuilder();
+
+                    //director.Construct(builder, 60, 60, mapAdapter, mapItems);
+                    //mapItems = builder.GetCrate();
+
+                    //director.Construct(builder, 60, 450, mapAdapter, mapItems);
+                    //mapItems = builder.GetCrate();
+
+                    //director.Construct(builders, 450, 450, mapAdapter, mapItems);
+                    //mapItems = builders.GetCrate();
+                    //mapItems.AddMapItem();
+
+
+                    //foreach (var VARIABLE in mapAdapter.getMap())
+                    //{
+                    //    if (VARIABLE is Crate)
+                    //    {
+                            
+                    //        //IColor c = (Crate)VARIABLE.
+                    //        this.Controls.Add(new PictureBox { Name = "Crate", Location = new Point(VARIABLE.x, VARIABLE.y), Size = new Size(25, 25), BackColor = (VARIABLE as Crate).GetColor().GetColor() });
+
+                    //    }
+                    //}
+
+
+
+                    
+
                 }
             }
 

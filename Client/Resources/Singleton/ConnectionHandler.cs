@@ -48,7 +48,14 @@ namespace Client.Models.Singleton
         // Walls
         private string wallsData = "https://localhost:44331/api/walls/";
         public List<Wall> roomWalls;
+
+
         public Dictionary<int, PictureBox> wallModels;
+
+        // Crates
+        private string cratesData = "https://localhost:44331/api/crates/";
+        public List<Crate> crates = new List<Crate>();
+
 
 
 
@@ -69,34 +76,81 @@ namespace Client.Models.Singleton
 
         }
 
+
+        //mapItems = new Wall(120, 210, new Blue(), mapAdapter, mapItems);
+
+        //for (int i = 1; i <= 10; i++)
+        //{
+        //    mapItems = new Wall(i*10, 30, new Blue(), mapAdapter, mapItems);
+        //}
+
+        //PowerUpCrateBuildDirector director = new PowerUpCrateBuildDirector();
+        //IPowerUpCrateBuilder builder = new QuantityCrateBuilder();
+        //director.Construct(builder, 300, 300, mapAdapter, mapItems);
+        //mapItems = builder.GetCrate();
+
         private async Task TryToCreateMap(Form form)
         {
-
-            
-
-
+            // MAP
             IMap mapAdapter = new MapAdapter();
             IMapItems mapItems = mapAdapter;
+
+            // WALLS LOGIC
             mapItems = new Wall(0, 40, new Blue(), mapAdapter, mapItems);
             mapItems = new Wall(0, 542, new Blue(), mapAdapter, mapItems);
             mapItems = new Wall(0, 0, new Blue(), mapAdapter, mapItems);
             mapItems = new Wall(565, 0, new Blue(), mapAdapter, mapItems);
 
-            //mapItems = new Wall(120, 210, new Blue(), mapAdapter, mapItems);
-
-            //for (int i = 1; i <= 10; i++)
+            
+            //if (mapAdapter.getMap()[0] is Wall)
+            //    form.Controls.Add(new PictureBox { Name = "Wall", Location = new Point(mapAdapter.getMap()[0].x, mapAdapter.getMap()[0].y), Size = new Size(600, 20), BackColor = Color.DarkSlateBlue });
+            //if (mapAdapter.getMap()[1] is Wall)
+            //    form.Controls.Add(new PictureBox { Name = "Wall", Location = new Point(mapAdapter.getMap()[1].x, mapAdapter.getMap()[1].y), Size = new Size(600, 20), BackColor = Color.DarkSlateBlue });
+            //if (mapAdapter.getMap()[2] is Wall)
+            //    form.Controls.Add(new PictureBox { Name = "Wall", Location = new Point(mapAdapter.getMap()[2].x, mapAdapter.getMap()[2].y), Size = new Size(20, 600), BackColor = Color.DarkSlateBlue });
+            //if (mapAdapter.getMap()[3] is Wall)
+            //    form.Controls.Add(new PictureBox { Name = "Wall", Location = new Point(mapAdapter.getMap()[3].x, mapAdapter.getMap()[3].y), Size = new Size(20, 600), BackColor = Color.DarkSlateBlue });
+            //List<IGameObject> serverWalls = new List<IGameObject>();
+            //foreach (var v in mapAdapter.getMap())
             //{
-            //    mapItems = new Wall(i*10, 30, new Blue(), mapAdapter, mapItems);
+            //    if (v is Wall)
+            //    {
+            //        roomWalls.Add((Wall)v);
+            //        serverWalls.Add(v);
+            //        HttpResponseMessage response = await client.PostAsJsonAsync(wallsData, v);
+            //    }
             //}
 
-            //PowerUpCrateBuildDirector director = new PowerUpCrateBuildDirector();
-            //IPowerUpCrateBuilder builder = new QuantityCrateBuilder();
-            //director.Construct(builder, 300, 300, mapAdapter, mapItems);
-            //mapItems = builder.GetCrate();
+            // CRATE LOGIC
 
+            PowerUpCrateBuildDirector director = new PowerUpCrateBuildDirector();
+            IPowerUpCrateBuilder builder = new QuantityCrateBuilder();
+            IPowerUpCrateBuilder builders = new SpeedCrateBuilder();
 
+            director.Construct(builder, 60, 60, mapAdapter, mapItems);
+            mapItems = builder.GetCrate();
 
+            director.Construct(builder, 60, 450, mapAdapter, mapItems);
+            mapItems = builder.GetCrate();
+
+            director.Construct(builders, 450, 450, mapAdapter, mapItems);
+            mapItems = builders.GetCrate();
             mapItems.AddMapItem();
+
+            //mapItems.AddMapItem();
+            foreach (var VARIABLE in mapAdapter.getMap())
+            {
+                if (VARIABLE is Crate)
+                {
+
+                    //IColor c = (Crate)VARIABLE.
+                    form.Controls.Add(new PictureBox { Name = "Crate", Location = new Point(VARIABLE.x, VARIABLE.y), Size = new Size(25, 25), BackColor = (VARIABLE as Crate).GetColor().GetColor() });
+                    Crate c = new Crate(VARIABLE.x, VARIABLE.y, null, null, null);
+                    c.Type = (VARIABLE as Crate).powerUp.getPowerUpType();
+                    HttpResponseMessage response = await client.PostAsJsonAsync(cratesData, c);
+                }
+            }
+
             if (mapAdapter.getMap()[0] is Wall)
                 form.Controls.Add(new PictureBox { Name = "Wall", Location = new Point(mapAdapter.getMap()[0].x, mapAdapter.getMap()[0].y), Size = new Size(600, 20), BackColor = Color.DarkSlateBlue });
             if (mapAdapter.getMap()[1] is Wall)
@@ -105,33 +159,42 @@ namespace Client.Models.Singleton
                 form.Controls.Add(new PictureBox { Name = "Wall", Location = new Point(mapAdapter.getMap()[2].x, mapAdapter.getMap()[2].y), Size = new Size(20, 600), BackColor = Color.DarkSlateBlue });
             if (mapAdapter.getMap()[3] is Wall)
                 form.Controls.Add(new PictureBox { Name = "Wall", Location = new Point(mapAdapter.getMap()[3].x, mapAdapter.getMap()[3].y), Size = new Size(20, 600), BackColor = Color.DarkSlateBlue });
-
+            List<IGameObject> serverWalls = new List<IGameObject>();
             foreach (var v in mapAdapter.getMap())
             {
                 if (v is Wall)
                 {
                     roomWalls.Add((Wall)v);
+                    serverWalls.Add(v);
+                    HttpResponseMessage response = await client.PostAsJsonAsync(wallsData, v);
                 }
             }
-            List<IGameObject> serverWalls = new List<IGameObject>();
-            foreach (var v in roomWalls)
-            {
-                serverWalls.Add(v);
-                HttpResponseMessage response = await client.PostAsJsonAsync(wallsData, v);
-            }
-            //List<Wall> walls = new List<Wall>();
-            //walls.Add(roomWalls[0].map.getMap());
 
+            
         }
+
 
         private async Task TryTogetMap(Form form)
         {
+            HttpResponseMessage response = await client.GetAsync(cratesData);
 
+#pragma warning disable CS0618 // Type or member is obsolete
+            crates = await JsonConvert.DeserializeObjectAsync<List<Crate>>(await response.Content.ReadAsStringAsync());
+#pragma warning restore CS0618 // Type or member is obsolete
 
             form.Controls.Add(new PictureBox { Name = "Wall", Location = new Point(roomWalls[0].x, roomWalls[0].y), Size = new Size(600, 20), BackColor = Color.DarkSlateBlue });
             form.Controls.Add(new PictureBox { Name = "Wall", Location = new Point(roomWalls[1].x, roomWalls[1].y), Size = new Size(600, 20), BackColor = Color.DarkSlateBlue });
             form.Controls.Add(new PictureBox { Name = "Wall", Location = new Point(roomWalls[2].x, roomWalls[2].y), Size = new Size(20, 600), BackColor = Color.DarkSlateBlue });
             form.Controls.Add(new PictureBox { Name = "Wall", Location = new Point(roomWalls[3].x, roomWalls[3].y), Size = new Size(20, 600), BackColor = Color.DarkSlateBlue });
+
+            foreach (var crate in crates)
+            {
+                if(crate.Type == "Quantity")
+                    form.Controls.Add(new PictureBox { Name = "Crate", Location = new Point(crate.x, crate.y), Size = new Size(25, 25), BackColor = Color.Brown });
+                if (crate.Type == "Speed")
+                    form.Controls.Add(new PictureBox { Name = "Crate", Location = new Point(crate.x, crate.y), Size = new Size(25, 25), BackColor = Color.Black });
+
+            }
 
         }
 

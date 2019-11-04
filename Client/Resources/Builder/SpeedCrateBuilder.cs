@@ -29,7 +29,7 @@ namespace Client.Resources.Builder
 
         public void SetColor()
         {
-            crate.color = new Blue();
+            crate.color = new Black();
         }
 
         public void SetMap(IMap map)
