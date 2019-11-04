@@ -330,3 +330,5 @@ ASALocalRun/
 .mfractor/
 
 Client/obj/Debug/
+
+Server/
