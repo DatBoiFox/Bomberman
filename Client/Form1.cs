@@ -283,10 +283,7 @@ namespace Client
         private void gameTimer_Tick(object sender, EventArgs e)
         {
             //UpdatePlayers();
-            try {
                 label1.Text = connectionHandler.State.displayState();
-            }
-            catch { }
             
         }
 

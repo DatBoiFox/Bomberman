@@ -6,31 +6,31 @@ namespace Client.Resources.Abstract_Factory
 {
     public class BombCreatorHandler
     {
-        private static Dictionary<string, IBombCreator> bombDictionary = new Dictionary<string, IBombCreator>();
+    private static Dictionary<string, IBombCreator> bombDictionary = new Dictionary<string, IBombCreator>();
 
-        public static IBombCreator GetBombCreator(string strategy, string type)
+    public static IBombCreator GetBombCreator(string strategy, string type)
+    {
+        IBombCreator bombCreator = null;
+        if (bombDictionary.ContainsKey(strategy + type))
+            bombCreator = bombDictionary[strategy + type];
+        else
         {
-            IBombCreator bombCreator = null;
-            if (bombDictionary.ContainsKey(strategy + type))
-                bombCreator = bombDictionary[strategy + type];
-            else
+            BombStrategy bombStrategy = null;
+            switch (strategy)
             {
-                BombStrategy bombStrategy = null;
-                switch (strategy)
-                {
-                    case "double": bombStrategy = new DoubleExplosion(); break;
-                    case "horizontal": bombStrategy = new HorizontalExplosion(); break;
-                    case "mine": bombStrategy = new MineExplosion(); break;
-                    case "vertical": bombStrategy = new VerticalExplosion(); break;
-                }
-                switch (type)
-                {
-                    case "player": bombCreator = new SimplePlayerBomb(bombStrategy); break;
-                    case "enemy": bombCreator = new SimpleEnemyBomb(bombStrategy); break;               
-                }
-                bombDictionary.Add(strategy + type, bombCreator);
+                case "double": bombStrategy = new DoubleExplosion(); break;
+                case "horizontal": bombStrategy = new HorizontalExplosion(); break;
+                case "mine": bombStrategy = new MineExplosion(); break;
+                case "vertical": bombStrategy = new VerticalExplosion(); break;
             }
-            return bombCreator;
+            switch (type)
+            {
+                case "player": bombCreator = new SimplePlayerBomb(bombStrategy); break;
+                case "enemy": bombCreator = new SimpleEnemyBomb(bombStrategy); break;               
+            }
+            bombDictionary.Add(strategy + type, bombCreator);
         }
+        return bombCreator;
     }
+}
 }

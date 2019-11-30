@@ -13,17 +13,70 @@ namespace Client.Resources.Proxy.Singleton
 {
     class ProxyConnectionHandler : IConnectionHandler
     {
-        private ConnectionHandler connectionHandler;
+        private ConnectionHandler connectionHandler = null;
         private static ProxyConnectionHandler instance = null;
         private static object _lock = new object();
 
-        public bool ConnectionEstablished { get => connectionHandler.ConnectionEstablished;}
-        public Player ClientPlayer { get => connectionHandler.ClientPlayer;}
-        public PictureBox ClientPlayerBox { get => connectionHandler.ClientPlayerBox;}
-        public List<Bomb> PlayerPlacedBombs { get => connectionHandler.PlayerPlacedBombs; }
-        public Dictionary<int, PictureBox> PlayerPlacedBombModels { get => connectionHandler.PlayerPlacedBombModels; }
-        public IConnectionState State { get => connectionHandler.State; set => connectionHandler.State = value; }
-
+        public bool ConnectionEstablished 
+        {
+            get
+            {
+                if (connectionHandler == null)
+                    connectionHandler = new ConnectionHandler();
+                return connectionHandler.ConnectionEstablished;
+            }
+        }
+        public Player ClientPlayer
+        {
+            get
+            {
+                if (connectionHandler == null)
+                    connectionHandler = new ConnectionHandler();
+                return connectionHandler.ClientPlayer;
+            }
+        }
+        public PictureBox ClientPlayerBox
+        {
+            get
+            {
+                if (connectionHandler == null)
+                    connectionHandler = new ConnectionHandler();
+                return connectionHandler.ClientPlayerBox;
+            }
+        }
+        public List<Bomb> PlayerPlacedBombs
+        {
+            get
+            {
+                if (connectionHandler == null)
+                    connectionHandler = new ConnectionHandler();
+                return connectionHandler.PlayerPlacedBombs;
+            }
+        }
+        public Dictionary<int, PictureBox> PlayerPlacedBombModels
+        {
+            get
+            {
+                if (connectionHandler == null)
+                    connectionHandler = new ConnectionHandler();
+                return connectionHandler.PlayerPlacedBombModels;
+            }
+        }
+        public IConnectionState State
+        {
+            get
+            {
+                if (connectionHandler == null)
+                    connectionHandler = new ConnectionHandler();
+                return connectionHandler.State;
+            }
+            set
+            {
+                if (connectionHandler == null)
+                    connectionHandler = new ConnectionHandler();
+                connectionHandler.State = value;
+            }
+        }
 
         public static ProxyConnectionHandler GetInstance()
         {

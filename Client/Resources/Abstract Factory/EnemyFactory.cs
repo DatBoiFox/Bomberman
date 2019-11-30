@@ -4,7 +4,7 @@ using Client.Resources.Strategy;
 
 namespace Client.Resources.Abstract_Factory
 {
-    class EnemyFactory : AbstractGameObjectsFactory
+    public class EnemyFactory : AbstractGameObjectsFactory
     {
         public override IBombCreator CreateBomb(string strategy)
         {

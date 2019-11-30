@@ -85,4 +85,3 @@ C:\Users\Ignas\Documents\GitHub\Bomberman\Client\bin\Debug\System.Net.Http.Forma
 C:\Users\Ignas\Documents\GitHub\Bomberman\Client\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Ignas\Documents\GitHub\Bomberman\Client\bin\Debug\System.Net.Http.Formatting.xml
 C:\Users\Ignas\Documents\GitHub\Bomberman\Client\obj\Debug\Client.csproj.CopyComplete
-C:\Users\Ignas\Documents\GitHub\Bomberman\Client\obj\Debug\Client.csproj.CoreCompileInputs.cache
