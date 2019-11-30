@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 using Client.Models;
 using Client.Resources.Adapter.Adapter_1;
 using Client.Resources.Decorator;
+using Client.Resources.Iterator;
 
 namespace Client.Resources._Interfaces
 {
     public interface IMap : IMapItems
     {
-        void AddItemToList(IGameObject item);
-        List<IGameObject> getMap();
+        void AddItemToMap(IGameObject item);
+        MapItemRepository GetMap();
     }
 }

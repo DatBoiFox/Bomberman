@@ -6,9 +6,9 @@ namespace Client.Resources.Abstract_Factory
 {
     public class PlayerFactory : AbstractGameObjectsFactory
     {
-        public override IBombCreator CreateBomb(BombStrategy strategy)
+        public override IBombCreator CreateBomb(string strategy)
         {
-            return BombCreatorHandler.GetPlayerBombCreator(strategy);
+            return BombCreatorHandler.GetBombCreator(strategy, "player");
         }
 
         public override IPlayerCreator CreatePlayer()

@@ -13,6 +13,8 @@ namespace Client.Resources.Models
         [JsonIgnore]
         public IPowerUp powerUp { get; set; }
 
+        public string Type { get; set; }
+
         public Crate(IMapItems wrappee) : base(wrappee)
         {
 
@@ -34,6 +36,7 @@ namespace Client.Resources.Models
             this.map = map;
             this.powerUp = powerUp;
         }
+
         [JsonConstructor]
         public Crate(int id, int x, int y, string type):base(null)
         {
@@ -46,7 +49,7 @@ namespace Client.Resources.Models
         public override void AddMapItem()
         {
             wrappee.AddMapItem();
-            map.AddItemToList(this);
+            map.AddItemToMap(this);
             // create crate in map;
         }
 

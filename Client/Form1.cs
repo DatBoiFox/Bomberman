@@ -1,5 +1,4 @@
 ﻿using Client.Models;
-using Client.Models.Singleton;
 using Client.Resources._Interfaces;
 using Client.Resources.Abstract_Factory;
 using Client.Resources.Adapter.Adapter_1;
@@ -8,6 +7,8 @@ using Client.Resources.Builder;
 using Client.Resources.Command;
 using Client.Resources.Decorator;
 using Client.Resources.Models;
+using Client.Resources.Proxy;
+using Client.Resources.Proxy.Singleton;
 using Client.Resources.Strategy;
 using System;
 using System.Collections.Generic;
@@ -33,6 +34,9 @@ namespace Client
         private Timer updateBombsTimer;
 
         private RemoteControl rc = new RemoteControl();
+        private PlayerFactory playerFactory = new PlayerFactory();
+        private EnemyFactory bombFactory = new EnemyFactory();
+        private IConnectionHandler connectionHandler = ProxyConnectionHandler.GetInstance();
         //private List<Bomb> bombs = new List<Bomb>();
 
         //PictureBox box = new PictureBox
@@ -74,8 +78,7 @@ namespace Client
 
         private async void UpdatePlayersCount(object sender, EventArgs e)
         {
-            ConnectionHandler connectionHandler = ConnectionHandler.GetInstance();
-            if (connectionHandler.connectionEstablished)
+            if (connectionHandler.ConnectionEstablished)
             {
                 //await connectionHandler.GetAllPlayers();
                 //label2.Text = "Current Players: " + connectionHandler.GetAllPlayers().
@@ -84,8 +87,7 @@ namespace Client
 
         private async void UpdateBombs(object sender, EventArgs e)
         {
-            ConnectionHandler connectionHandler = ConnectionHandler.GetInstance();
-            if (!connectionHandler.connectionEstablished)
+            if (!connectionHandler.ConnectionEstablished)
                 return;
 
             await connectionHandler.UpdateBombs(this, label1);
@@ -93,8 +95,7 @@ namespace Client
 
         private async void UpdatePlayers(object sender, EventArgs e)
         {
-            ConnectionHandler connectionHandler = ConnectionHandler.GetInstance();
-            if (!connectionHandler.connectionEstablished)
+            if (!connectionHandler.ConnectionEstablished)
                 return;
 
             await connectionHandler.Update(this, label1);
@@ -105,25 +106,25 @@ namespace Client
                 {
                     if (Keyboard.IsKeyDown(Key.D))
                     {
-                        rc.MoveRight(connectionHandler.clientPlayer);
+                        rc.MoveRight(connectionHandler.ClientPlayer);
                     }
                     if (Keyboard.IsKeyDown(Key.A))
                     {
-                        rc.MoveLeft(connectionHandler.clientPlayer);
+                        rc.MoveLeft(connectionHandler.ClientPlayer);
                     }
                     if (Keyboard.IsKeyDown(Key.W))
                     {
-                        rc.MoveForward(connectionHandler.clientPlayer);
+                        rc.MoveForward(connectionHandler.ClientPlayer);
                     }
                     if (Keyboard.IsKeyDown(Key.S))
                     {
-                        rc.MoveBackward(connectionHandler.clientPlayer);
+                        rc.MoveBackward(connectionHandler.ClientPlayer);
                     }
                     if (Keyboard.IsKeyDown(Key.LeftCtrl))
                     {
                         rc.undo();
                     }
-                    connectionHandler.clientPlayerBox.Location = new Point(connectionHandler.clientPlayer.x, connectionHandler.clientPlayer.y);
+                    connectionHandler.ClientPlayerBox.Location = new Point(connectionHandler.ClientPlayer.x, connectionHandler.ClientPlayer.y);
                     await connectionHandler.UpdatePlayer();
                 }
 
@@ -134,36 +135,36 @@ namespace Client
                         canBomb = false;
                         Bomb bomb;
                         String bombType = "";
-                        if (connectionHandler.playerPlacedBombs.Count > 0)
+                        if (connectionHandler.PlayerPlacedBombs.Count > 0)
                         {
-                            bomb = connectionHandler.playerPlacedBombs.Last().Clone();
-                            bomb.x = connectionHandler.clientPlayer.x;
-                            bomb.y = connectionHandler.clientPlayer.y;
+                            bomb = connectionHandler.PlayerPlacedBombs.Last().Clone();
+                            bomb.x = connectionHandler.ClientPlayer.x;
+                            bomb.y = connectionHandler.ClientPlayer.y;
                         }
                         else
                         {
-                            bomb = new Bomb(connectionHandler.clientPlayer.x, connectionHandler.clientPlayer.y);
+                            bomb = new Bomb(connectionHandler.ClientPlayer.x, connectionHandler.ClientPlayer.y);
                         }
 
                         PlayerFactory fac = new PlayerFactory();
 
                         if (Keyboard.IsKeyUp(Key.X))
                         {
-                            PictureBox b = fac.CreateBomb(new HorizontalExplosion()).CreateBombModel(bomb);
+                            PictureBox b = fac.CreateBomb("horizontal").CreateBombModel(bomb);
                             bomb.Type = "Horizontal";
-                            connectionHandler.playerPlacedBombModels.Add(connectionHandler.playerPlacedBombs.Count, b);
+                            connectionHandler.PlayerPlacedBombModels.Add(connectionHandler.PlayerPlacedBombs.Count, b);
                             this.Controls.Add(b);
                             bombType = "Horizontal";
                         }
                         if (Keyboard.IsKeyUp(Key.Z))
                         {
-                            PictureBox b = fac.CreateBomb(new VerticalExplosion()).CreateBombModel(bomb);
-                            connectionHandler.playerPlacedBombModels.Add(connectionHandler.playerPlacedBombs.Count, b);
+                            PictureBox b = fac.CreateBomb("vertical").CreateBombModel(bomb);
+                            connectionHandler.PlayerPlacedBombModels.Add(connectionHandler.PlayerPlacedBombs.Count, b);
                             bomb.Type = "Vertical";
                             this.Controls.Add(b);
                             bombType = "Vertical";
                         }
-                        connectionHandler.playerPlacedBombs.Add(bomb);
+                        connectionHandler.PlayerPlacedBombs.Add(bomb);
                         await connectionHandler.PostBomb(bomb, bombType);
                     }
                 }
@@ -183,14 +184,14 @@ namespace Client
 
                     //List<List<int>> mapWallVals = {0};
 
-                    for (int i = 2; i < 10; i++)
-                    {
-                        if(i %2 != 0)
-                            continue;
-                        int x = 30 * i;
-                        int y = 60;
-                        this.Controls.Add(new PictureBox { Name = "Wall", Location = new Point(x, y), Size = new Size(30, 30), BackColor = Color.Black });
-                    }
+                    //for (int i = 2; i < 10; i++)
+                    //{
+                    //    if(i %2 != 0)
+                    //        continue;
+                    //    int x = 30 * i;
+                    //    int y = 60;
+                    //    this.Controls.Add(new PictureBox { Name = "Wall", Location = new Point(x, y), Size = new Size(30, 30), BackColor = Color.Black });
+                    //}
 
                 }
                 if (Keyboard.IsKeyDown(Key.Q))
@@ -245,16 +246,14 @@ namespace Client
         // ----------------Connection----------------
         public async void Connect()
         {
-            ConnectionHandler connectionHandler = ConnectionHandler.GetInstance();
             await connectionHandler.Connect(this);
-            if (connectionHandler.connectionEstablished)
+            if (connectionHandler.ConnectionEstablished)
             {
                 label1.Text = "Connected";
             }
         }
         public async void Disconnect()
         {
-            ConnectionHandler connectionHandler = ConnectionHandler.GetInstance();
             await connectionHandler.Disconnect(this);
             label1.Text = "Disconnected";
         }

@@ -7,14 +7,9 @@ namespace Client.Resources.Builder
 {
     class PowerUpCrateBuildDirector
     {
-        public void Construct(IPowerUpCrateBuilder builder, int x, int y, IMap map, IMapItems wrappee)
+        public void Construct(PowerUpCrateBuilder builder, int x, int y, IMap map, IMapItems wrappee)
         {
-            builder.CreateCrate();
-            builder.SetPosition(x, y);
-            builder.AddPowerUp();
-            builder.SetColor();
-            builder.SetMap(map);
-            builder.SetWrappee(wrappee);
+            builder.ConstructCrate(x, y, map, wrappee);
         }
     }
 }

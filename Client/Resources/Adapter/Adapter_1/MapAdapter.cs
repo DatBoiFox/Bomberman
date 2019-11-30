@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Client.Models;
 using Client.Resources._Interfaces;
 using Client.Resources.Decorator;
+using Client.Resources.Iterator;
 
 namespace Client.Resources.Adapter.Adapter_1
 {
@@ -23,12 +24,12 @@ namespace Client.Resources.Adapter.Adapter_1
             //map.mapItems.Add();
         }
 
-        public void AddItemToList(IGameObject item)
+        public void AddItemToMap(IGameObject item)
         {
-            map.AddItemToList(item);
+            map.AddItemToMap(item);
         }
 
-        public List<IGameObject> getMap()
+        public MapItemRepository GetMap()
         {
             return map.mapItems;
         }

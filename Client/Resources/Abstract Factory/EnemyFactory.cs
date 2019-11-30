@@ -6,9 +6,9 @@ namespace Client.Resources.Abstract_Factory
 {
     class EnemyFactory : AbstractGameObjectsFactory
     {
-        public override IBombCreator CreateBomb(BombStrategy strategy)
+        public override IBombCreator CreateBomb(string strategy)
         {
-            return BombCreatorHandler.GetEnemyBombCreator(strategy);
+            return BombCreatorHandler.GetBombCreator(strategy, "enemy");
         }
 
         public override IPlayerCreator CreatePlayer()

@@ -5,19 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 using Client.Models;
 using Client.Resources.Decorator;
+using Client.Resources.Iterator;
 
 namespace Client.Resources.Adapter.Adapter_1
 {
     public class Map
     {
-        public List<IGameObject> mapItems { get; set; }
+        public MapItemRepository mapItems { get; private set; }
 
         public Map()
         {
-            mapItems = new List<IGameObject>();
+            mapItems = new MapItemRepository();
         }
 
-        public void AddItemToList(IGameObject item)
+        public void AddItemToMap(IGameObject item)
         {
             mapItems.Add(item);
         }

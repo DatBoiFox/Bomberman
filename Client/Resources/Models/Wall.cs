@@ -31,7 +31,7 @@ namespace Client.Models
         public override void AddMapItem()
         {
             wrappee.AddMapItem();
-            map.AddItemToList(this);
+            map.AddItemToMap(this);
             // create wall in map;
         }
     }

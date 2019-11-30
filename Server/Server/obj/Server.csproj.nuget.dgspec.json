@@ -1,26 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Ktu\\OP\\Bomberman\\Bomberman\\Server\\Server\\Server.csproj": {}
+    "C:\\Users\\Ignas\\Documents\\GitHub\\Bomberman\\Server\\Server\\Server.csproj": {}
   },
   "projects": {
-    "D:\\Ktu\\OP\\Bomberman\\Bomberman\\Server\\Server\\Server.csproj": {
+    "C:\\Users\\Ignas\\Documents\\GitHub\\Bomberman\\Server\\Server\\Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Ktu\\OP\\Bomberman\\Bomberman\\Server\\Server\\Server.csproj",
+        "projectUniqueName": "C:\\Users\\Ignas\\Documents\\GitHub\\Bomberman\\Server\\Server\\Server.csproj",
         "projectName": "Server",
-        "projectPath": "D:\\Ktu\\OP\\Bomberman\\Bomberman\\Server\\Server\\Server.csproj",
-        "packagesPath": "C:\\Users\\Oqular\\.nuget\\packages\\",
-        "outputPath": "D:\\Ktu\\OP\\Bomberman\\Bomberman\\Server\\Server\\obj\\",
+        "projectPath": "C:\\Users\\Ignas\\Documents\\GitHub\\Bomberman\\Server\\Server\\Server.csproj",
+        "packagesPath": "C:\\Users\\Ignas\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Ignas\\Documents\\GitHub\\Bomberman\\Server\\Server\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Oqular\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
+          "C:\\Users\\Ignas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"
