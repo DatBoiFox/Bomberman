@@ -36,7 +36,7 @@ namespace Client.Models.Proxy
         public Player ClientPlayer { get; private set; }
         public PictureBox ClientPlayerBox { get; set; }
         //public List<Player> players;
-        public List<Player> currentlyOnlinePlayers;
+        public List<Player> currentlyOnlinePlayers = new List<Player>();
         public Dictionary<int, PictureBox> enemyPlayerModels;
 
         // Bombs
@@ -284,11 +284,28 @@ namespace Client.Models.Proxy
                 if (response.IsSuccessStatusCode)
                 {
                     List<Player> players = await response.Content.ReadAsAsync<List<Player>>();
+                    currentlyOnlinePlayers = players;
                     return players;
                 }
             }
             return null;
         }
+
+        public async Task<int> GetConnectedPlayersCount()
+        {
+            try { 
+                HttpResponseMessage response = await client.GetAsync(playersData);
+                if (response.IsSuccessStatusCode)
+                {
+                    List<Player> players = await response.Content.ReadAsAsync<List<Player>>();
+                    currentlyOnlinePlayers = players;
+                    return players.Count;
+                }
+            }
+            catch { }
+            return -1;
+        }
+
 
         public async Task<List<Bomb>> GetAllBombs()
         {

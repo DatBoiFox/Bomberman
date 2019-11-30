@@ -120,12 +120,21 @@ namespace Client.Resources.Proxy.Singleton
                 connectionHandler = new ConnectionHandler();
             await connectionHandler.PostBomb(b, bombType);
         }
-
+        //private ConnectionHandler connectionHandlerTest = new ConnectionHandler();
         public async Task Connect(Form form)
         {
             if (connectionHandler == null)
                 connectionHandler = new ConnectionHandler();
-            await connectionHandler.Connect(form);
+            if(await connectionHandler.GetConnectedPlayersCount() >= 2)
+            {
+                connectionHandler.State = new RoomFullState();
+            }
+            else
+            {
+                await connectionHandler.Connect(form);
+            }
+
+            
         }
 
         public async Task Disconnect(Form form)

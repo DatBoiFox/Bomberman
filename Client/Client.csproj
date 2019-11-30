@@ -80,6 +80,7 @@
     <Compile Include="Resources\Prototype\IBombPrototype.cs" />
     <Compile Include="Resources\Proxy\IConnectionHandler.cs" />
     <Compile Include="Resources\Proxy\Singleton\ProxyConnectionHandler.cs" />
+    <Compile Include="Resources\State\RoomFullState.cs" />
     <Compile Include="Resources\State\DisconnectedState.cs" />
     <Compile Include="Resources\State\DisconnectingState.cs" />
     <Compile Include="Resources\State\ConnectedState.cs" />
