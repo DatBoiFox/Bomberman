@@ -8,7 +8,7 @@ namespace Client.Resources.State
 {
     class RoomFullState : IConnectionState
     {
-        public String displayState()
+        public string displayState()
         {
             return "Room Full";
         }

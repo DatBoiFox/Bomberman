@@ -132,9 +132,7 @@ namespace Client.Resources.Proxy.Singleton
             else
             {
                 await connectionHandler.Connect(form);
-            }
-
-            
+            }   
         }
 
         public async Task Disconnect(Form form)
