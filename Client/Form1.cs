@@ -276,15 +276,10 @@ namespace Client
 
         }
 
-
-
-
-        //Not using
         private void gameTimer_Tick(object sender, EventArgs e)
         {
             //UpdatePlayers();
-                label1.Text = connectionHandler.State.displayState();
-            
+            label1.Text = connectionHandler.State.displayState();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)

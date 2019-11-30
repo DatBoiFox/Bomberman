@@ -8,7 +8,7 @@ namespace Client.Resources.State
 {
     class DisconnectedState : IConnectionState
     {
-        public String displayState()
+        public string displayState()
         {
             return "Disconnected";
         }
