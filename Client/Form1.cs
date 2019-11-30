@@ -249,13 +249,13 @@ namespace Client
             await connectionHandler.Connect(this);
             if (connectionHandler.ConnectionEstablished)
             {
-                label1.Text = "Connected";
+                //label1.Text = "Connected";
             }
         }
         public async void Disconnect()
         {
             await connectionHandler.Disconnect(this);
-            label1.Text = "Disconnected";
+            //label1.Text = "Disconnected";
         }
         // ------------------------------------------
         private void button1_Click(object sender, EventArgs e)
@@ -283,11 +283,21 @@ namespace Client
         private void gameTimer_Tick(object sender, EventArgs e)
         {
             //UpdatePlayers();
+            try {
+                label1.Text = connectionHandler.State.displayState();
+            }
+            catch { }
+            
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.Dispose();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

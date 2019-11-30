@@ -8,10 +8,9 @@ namespace Client.Resources.State
 {
     class ConnectedState : IConnectionState
     {
-        public void displayState()
+        public String displayState()
         {
-
+            return "Connected";
         }
-    {
     }
 }

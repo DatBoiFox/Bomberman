@@ -154,6 +154,7 @@ namespace Client.Models.Proxy
 
         public ConnectionHandler()
         {
+            State = new DisconnectedState();
             ConnectionEstablished = false;
             //playerModels = new List<PictureBox>();
         }
@@ -162,6 +163,7 @@ namespace Client.Models.Proxy
         {
             if (ClientPlayer == null)
             {
+                State = new ConnectingState();
                 ClientPlayer = new Player();
                 HttpResponseMessage response = await client.PostAsJsonAsync(playersData, ClientPlayer);
                 playerCreator = new PlayerFactory().CreatePlayer();//PlayerCreatorHandler.GetPlayerCreator();
@@ -176,6 +178,7 @@ namespace Client.Models.Proxy
                 enemyPlacedBombModels = new Dictionary<int, PictureBox>();
                 if (response.IsSuccessStatusCode)
                 {
+                    State = new ConnectedState();
 #pragma warning disable CS0618 // Type or member is obsolete
                     ClientPlayer = await JsonConvert.DeserializeObjectAsync<Player>(await response.Content.ReadAsStringAsync());
 #pragma warning restore CS0618 // Type or member is obsolete
@@ -214,6 +217,7 @@ namespace Client.Models.Proxy
         }
         public async Task Disconnect(Form form)
         {
+            State = new DisconnectingState();
             ConnectionEstablished = false;
             if (ClientPlayer != null)
             {
@@ -249,7 +253,7 @@ namespace Client.Models.Proxy
                     enemyPlayerModels = null;
                     PlayerPlacedBombModels = null;
                     enemyPlacedBombModels = null;
-
+                    State = new DisconnectedState();
                     //form.Controls.Remove()
                 }
             }

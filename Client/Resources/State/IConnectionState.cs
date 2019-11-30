@@ -8,6 +8,6 @@ namespace Client.Resources.State
 {
     public interface IConnectionState
     {
-        void displayState();
+        String displayState();
     }
 }
