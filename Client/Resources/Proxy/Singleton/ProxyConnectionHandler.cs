@@ -125,7 +125,7 @@ namespace Client.Resources.Proxy.Singleton
         {
             if (connectionHandler == null)
                 connectionHandler = new ConnectionHandler();
-            if(await connectionHandler.GetConnectedPlayersCount() >= 2)
+            if(await connectionHandler.GetConnectedPlayersCount() >= 4)
             {
                 connectionHandler.State = new RoomFullState();
             }
