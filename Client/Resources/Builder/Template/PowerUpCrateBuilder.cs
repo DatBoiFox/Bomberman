@@ -20,12 +20,12 @@ namespace Client.Resources.Builder
             SetWrappee(wrappee);
         }
 
-        public void CreateCrate()
+        public virtual void CreateCrate()
         {
             crate = new Crate(new MapAdapter());
         }
 
-        public void SetPosition(int x, int y)
+        public virtual void SetPosition(int x, int y)
         {
             crate.x = x;
             crate.y = y;
@@ -35,12 +35,12 @@ namespace Client.Resources.Builder
 
         public abstract void SetColor();
 
-        public void SetMap(IMap map)
+        public virtual void SetMap(IMap map)
         {
             crate.map = map;
         }
 
-        public void SetWrappee(IMapItems item)
+        public virtual void SetWrappee(IMapItems item)
         {
             crate.wrappee = item;
         }
