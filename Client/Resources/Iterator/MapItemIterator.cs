@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Client.Resources.Iterator
 {
-    class MapItemIterator : Iterator
+    public class MapItemIterator : Iterator
     {
         private MapItemRepository repository;
 
@@ -41,6 +41,11 @@ namespace Client.Resources.Iterator
         public bool IsDone()
         {
             return (index >= repository.Count);
+        }
+
+        public MapItemRepository GetMapItemRepository()
+        {
+            return repository;
         }
     }
 }

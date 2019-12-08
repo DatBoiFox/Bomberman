@@ -64,6 +64,11 @@
     <Compile Include="Resources\Adapter\Adapter_1\IMap.cs" />
     <Compile Include="Resources\Adapter\Adapter_2\IPowerUp.cs" />
     <Compile Include="Resources\Adapter\Adapter_2\PowerUpAdapter.cs" />
+    <Compile Include="Resources\ChainOfResponsibility\AbstractLogger.cs" />
+    <Compile Include="Resources\ChainOfResponsibility\ErrorLogger.cs" />
+    <Compile Include="Resources\ChainOfResponsibility\ExceptionLogger.cs" />
+    <Compile Include="Resources\ChainOfResponsibility\FileLogger.cs" />
+    <Compile Include="Resources\ChainOfResponsibility\InformationLogger.cs" />
     <Compile Include="Resources\Command\Backward.cs" />
     <Compile Include="Resources\Command\Forward.cs" />
     <Compile Include="Resources\Command\ICommand.cs" />
@@ -76,6 +81,8 @@
     <Compile Include="Resources\Iterator\Iterator.cs" />
     <Compile Include="Resources\Iterator\MapItemIterator.cs" />
     <Compile Include="Resources\Iterator\MapItemRepository.cs" />
+    <Compile Include="Resources\Mediator\IMediator.cs" />
+    <Compile Include="Resources\MementoPattern\Memento.cs" />
     <Compile Include="Resources\Models\PowerUp.cs" />
     <Compile Include="Resources\Prototype\IBombPrototype.cs" />
     <Compile Include="Resources\Proxy\IConnectionHandler.cs" />
@@ -106,6 +113,10 @@
     <Compile Include="Resources\Abstract Factory\BombCreatorHandler.cs" />
     <Compile Include="Resources\Proxy\ConnectionHandler.cs" />
     <Compile Include="Resources\Abstract Factory\Bomb Factory\IBombCreator.cs" />
+    <Compile Include="Resources\Visitor\IteratorVisitor.cs" />
+    <Compile Include="Resources\Visitor\ContainsIteratorVisitor.cs" />
+    <Compile Include="Resources\Visitor\GetCountIteratorVisitor.cs" />
+    <Compile Include="Resources\Visitor\GetLastIteratorVisitor.cs" />
     <Compile Include="Resources\_Interfaces\IDrawable.cs" />
     <Compile Include="Resources\Models\IGameObject.cs" />
     <Compile Include="Resources\Abstract Factory\Player Factory\IPlayerCreator.cs" />

@@ -23,7 +23,7 @@ namespace Client.Resources.Command
 
         public void undo()
         {
-            player.x += 2;
+            //player.x += 2;
         }
     }
 }

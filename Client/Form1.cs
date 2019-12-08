@@ -12,14 +12,18 @@ using Client.Resources.Proxy.Singleton;
 using Client.Resources.Strategy;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Input;
+using Client.Resources.ChainOfResponsibility;
+using Client.Resources.Command;
+using Client.Resources.Mediator;
 
 namespace Client
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form, IMediator
     {
         private const int updateCountInterval = 300;
         private const int updatePlayersInterval = 30;
@@ -34,9 +38,18 @@ namespace Client
         private Timer updateBombsTimer;
 
         private RemoteControl rc = new RemoteControl();
-        private PlayerFactory playerFactory = new PlayerFactory();
-        private EnemyFactory bombFactory = new EnemyFactory();
+
+        private AbstractLogger logger;
+        //private PlayerFactory playerFactory = new PlayerFactory();
+        //private EnemyFactory bombFactory = new EnemyFactory();
         private IConnectionHandler connectionHandler = ProxyConnectionHandler.GetInstance();
+
+        public void notify(int type, string logMessage)
+        {
+            logger = new InformationLogger(type);
+            logger.logMessage(logMessage);
+        }
+
         //private List<Bomb> bombs = new List<Bomb>();
 
         //PictureBox box = new PictureBox
@@ -48,7 +61,6 @@ namespace Client
 
         //};
 
-
         public Form1()
         {
             InitializeComponent();
@@ -59,6 +71,7 @@ namespace Client
             //connectionHandler = new ConnectionHandler();
             SetUp();
         }
+
         private void SetUp()
         {
             updatePlayerCount = new Timer { Interval = updateCountInterval };
@@ -90,6 +103,7 @@ namespace Client
             if (!connectionHandler.ConnectionEstablished)
                 return;
 
+
             await connectionHandler.UpdateBombs(this, label1);
         }
 
@@ -107,6 +121,8 @@ namespace Client
                     if (Keyboard.IsKeyDown(Key.D))
                     {
                         rc.MoveRight(connectionHandler.ClientPlayer);
+                        Debug.WriteLine("i moved");
+                        //logger = new ErrorLogger();
                     }
                     if (Keyboard.IsKeyDown(Key.A))
                     {
@@ -147,6 +163,7 @@ namespace Client
                         }
 
                         PlayerFactory fac = new PlayerFactory();
+                        fac.setForm(this);
 
                         if (Keyboard.IsKeyUp(Key.X))
                         {
@@ -241,8 +258,6 @@ namespace Client
 
         }
 
-
-
         // ----------------Connection----------------
         public async void Connect()
         {
@@ -252,6 +267,7 @@ namespace Client
                 //label1.Text = "Connected";
             }
         }
+
         public async void Disconnect()
         {
             await connectionHandler.Disconnect(this);
@@ -291,5 +307,7 @@ namespace Client
         {
 
         }
+
+
     }
 }

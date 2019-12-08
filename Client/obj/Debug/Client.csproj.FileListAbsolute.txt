@@ -85,3 +85,17 @@ C:\Users\Ignas\Documents\GitHub\Bomberman\Client\bin\Debug\System.Net.Http.Forma
 C:\Users\Ignas\Documents\GitHub\Bomberman\Client\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Ignas\Documents\GitHub\Bomberman\Client\bin\Debug\System.Net.Http.Formatting.xml
 C:\Users\Ignas\Documents\GitHub\Bomberman\Client\obj\Debug\Client.csproj.CopyComplete
+C:\Users\Destroyer2\Documents\GitHub\Bomberman\Client\bin\Debug\Client.exe.config
+C:\Users\Destroyer2\Documents\GitHub\Bomberman\Client\bin\Debug\Client.exe
+C:\Users\Destroyer2\Documents\GitHub\Bomberman\Client\bin\Debug\Client.pdb
+C:\Users\Destroyer2\Documents\GitHub\Bomberman\Client\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Destroyer2\Documents\GitHub\Bomberman\Client\bin\Debug\System.Net.Http.Formatting.dll
+C:\Users\Destroyer2\Documents\GitHub\Bomberman\Client\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Destroyer2\Documents\GitHub\Bomberman\Client\bin\Debug\System.Net.Http.Formatting.xml
+C:\Users\Destroyer2\Documents\GitHub\Bomberman\Client\obj\Debug\Client.csprojAssemblyReference.cache
+C:\Users\Destroyer2\Documents\GitHub\Bomberman\Client\obj\Debug\Client.Form1.resources
+C:\Users\Destroyer2\Documents\GitHub\Bomberman\Client\obj\Debug\Client.Properties.Resources.resources
+C:\Users\Destroyer2\Documents\GitHub\Bomberman\Client\obj\Debug\Client.csproj.GenerateResource.cache
+C:\Users\Destroyer2\Documents\GitHub\Bomberman\Client\obj\Debug\Client.csproj.CopyComplete
+C:\Users\Destroyer2\Documents\GitHub\Bomberman\Client\obj\Debug\Client.exe
+C:\Users\Destroyer2\Documents\GitHub\Bomberman\Client\obj\Debug\Client.pdb

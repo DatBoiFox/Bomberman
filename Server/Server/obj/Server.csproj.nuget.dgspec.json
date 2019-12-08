@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ignas\\Documents\\GitHub\\Bomberman\\Server\\Server\\Server.csproj": {}
+    "C:\\Users\\Destroyer2\\Documents\\GitHub\\Bomberman\\Server\\Server\\Server.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ignas\\Documents\\GitHub\\Bomberman\\Server\\Server\\Server.csproj": {
+    "C:\\Users\\Destroyer2\\Documents\\GitHub\\Bomberman\\Server\\Server\\Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ignas\\Documents\\GitHub\\Bomberman\\Server\\Server\\Server.csproj",
+        "projectUniqueName": "C:\\Users\\Destroyer2\\Documents\\GitHub\\Bomberman\\Server\\Server\\Server.csproj",
         "projectName": "Server",
-        "projectPath": "C:\\Users\\Ignas\\Documents\\GitHub\\Bomberman\\Server\\Server\\Server.csproj",
-        "packagesPath": "C:\\Users\\Ignas\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ignas\\Documents\\GitHub\\Bomberman\\Server\\Server\\obj\\",
+        "projectPath": "C:\\Users\\Destroyer2\\Documents\\GitHub\\Bomberman\\Server\\Server\\Server.csproj",
+        "packagesPath": "C:\\Users\\Destroyer2\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Destroyer2\\Documents\\GitHub\\Bomberman\\Server\\Server\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Ignas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Destroyer2\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
