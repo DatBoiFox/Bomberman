@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Resources\Adapter\Adapter_1\Map.cs" />
     <Compile Include="Resources\Adapter\Adapter_1\MapAdapter.cs" />
+    <Compile Include="Resources\Adapter\Adapter_2\NoPowerUpAdapter.cs" />
     <Compile Include="Resources\Bridge\Black.cs" />
     <Compile Include="Resources\Bridge\Blue.cs" />
     <Compile Include="Resources\Bridge\Brown.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="Resources\Adapter\Adapter_1\IMap.cs" />
     <Compile Include="Resources\Adapter\Adapter_2\IPowerUp.cs" />
     <Compile Include="Resources\Adapter\Adapter_2\PowerUpAdapter.cs" />
+    <Compile Include="Resources\Builder\Template\EmptyCrateBuilder.cs" />
     <Compile Include="Resources\ChainOfResponsibility\AbstractLogger.cs" />
     <Compile Include="Resources\ChainOfResponsibility\ErrorLogger.cs" />
     <Compile Include="Resources\ChainOfResponsibility\ExceptionLogger.cs" />
