@@ -92,7 +92,7 @@
     <Compile Include="Resources\Iterator\MapItemRepository.cs" />
     <Compile Include="Resources\Mediator\IMediator.cs" />
     <Compile Include="Resources\MementoPattern\Memento.cs" />
-    <Compile Include="Resources\Models\PowerUp.cs" />
+    <Compile Include="Resources\Adapter\Adapter_2\PowerUp.cs" />
     <Compile Include="Resources\Prototype\IBombPrototype.cs" />
     <Compile Include="Resources\Proxy\IConnectionHandler.cs" />
     <Compile Include="Resources\Proxy\Singleton\ProxyConnectionHandler.cs" />
