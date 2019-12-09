@@ -19,6 +19,7 @@ using System.Windows.Forms;
 using System.Windows.Input;
 using Client.Resources.ChainOfResponsibility;
 using Client.Resources.Command;
+using Client.Resources.Interpreter;
 using Client.Resources.Mediator;
 
 namespace Client
@@ -121,7 +122,7 @@ namespace Client
                     if (Keyboard.IsKeyDown(Key.D))
                     {
                         rc.MoveRight(connectionHandler.ClientPlayer);
-                        Debug.WriteLine("i moved");
+                        //Debug.WriteLine("i moved");
                         //logger = new ErrorLogger();
                     }
                     if (Keyboard.IsKeyDown(Key.A))
@@ -191,7 +192,9 @@ namespace Client
                 }
                 if (Keyboard.IsKeyDown(Key.E))
                 {
-
+                    ExpressionExecutor executive = new ExpressionExecutor(rc, connectionHandler.ClientPlayer);
+                    //rc.MoveForward(connectionHandler.ClientPlayer);
+                    //rc.undo();
                     //IPowerUpCrateBuilder builder = new SpeedCrateBuilder();
                     //PowerUpCrateBuildDirector director = new PowerUpCrateBuildDirector();
                     //director.Construct(builder, 10, 10);

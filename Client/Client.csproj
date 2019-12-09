@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{81691272-23B4-4A68-8155-5A4C3D9C0A0F}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>Client</RootNamespace>
     <AssemblyName>Client</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
@@ -31,6 +31,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -77,6 +80,10 @@
     <Compile Include="Resources\Command\Right.cs" />
     <Compile Include="Resources\Decorator\IMapItems.cs" />
     <Compile Include="Resources\Decorator\MapItemDecorator.cs" />
+    <Compile Include="Resources\Interpreter\AbstractExpression.cs" />
+    <Compile Include="Resources\Interpreter\ExpressionExecutor.cs" />
+    <Compile Include="Resources\Interpreter\MoveExpression.cs" />
+    <Compile Include="Resources\Interpreter\UndoExpression.cs" />
     <Compile Include="Resources\Iterator\Container.cs" />
     <Compile Include="Resources\Iterator\Iterator.cs" />
     <Compile Include="Resources\Iterator\MapItemIterator.cs" />
@@ -136,6 +143,7 @@
     <Compile Include="Resources\Strategy\VerticalExplosion.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
